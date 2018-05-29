@@ -1,0 +1,420 @@
+﻿input::-ms-clear {
+    display: none;
+}
+
+p {
+    line-height: 190%;
+}
+
+.left-pane {
+    display: inline-block;
+    width: 880px;
+    margin-left: 45px;
+    position: relative;
+}
+
+.NewButton{
+    width:73px;
+    height:30px;
+    background-color:#F0F0F0
+}
+
+.btnWF{
+    height:30px;
+    background-color:#F0F0F0;
+    padding: 3px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;    
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.center-pane {    
+    width: 920px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.center-pane1 {    
+    width: 640px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.center-pane-new {    
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.right-pane {
+    display: inline-block;
+    margin-right: 45px;
+    margin-left: 10px;
+    width: 245px;
+    min-height: 590px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 0px 0px 10px 0px;
+    vertical-align: top;
+    position: relative;
+}
+
+.info-pane-tab {
+    padding: 5px 0px 0px 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.button-save {
+    width: 80px;
+    height: 90px;
+}
+
+.content-title-wrapper {
+    margin: 10px auto;
+}
+
+.content-title {
+    font-size: 20px;
+    color: #317d94;
+    letter-spacing: 2px;
+    line-height: 30px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.taskName {
+    width: 806px;
+}
+
+#taskContentEditor {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 5px;
+}
+
+.modifyTask {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    z-index: 9999;
+}
+
+.taskPropOperation {
+    position: absolute;
+    right: 5px;
+    font-size: 15px;
+}
+
+.filedContent {
+    width: 180px;
+}
+
+.timeWidth {
+    width: 180px;
+}
+
+.relatedTop {
+    margin-top: 10px;
+}
+
+.currentHolder {
+    margin-bottom: 10px;
+}
+
+.taskPropertySelector {
+    width: 100%;
+}
+
+.taskContentBox {
+    background-color: #ffffff;
+    border: 1px solid #91c0ce;
+    overflow: hidden;
+    position: relative;
+    padding: 0 25px;
+    margin-bottom: 10px;
+}
+
+.taskContentBoxNotPadding {
+    background-color: #ffffff;
+    border: 1px solid #91c0ce;
+    
+    position: relative;   
+    margin-bottom: 10px;
+}
+
+.GridTable
+{
+	border-collapse:collapse;
+    border:solid 1px #91c0ce;	  
+}
+
+.GridTable td
+{
+    border:solid 1px #c0c0c0;
+    padding-left:2px;
+    padding-right:5px;
+}
+.FormTitle
+{
+   background-color:#F7F7F7;
+   text-align: right;
+}
+.AdviceNoteFormTitle
+{
+   background-color:#F1F6FA;
+   padding-left:5px;
+}
+
+.InputHeight{
+    height:28px;
+    line-height:23px;
+    vertical-align:middle;
+    font-size:15px;
+}
+
+.propertyHeader {
+    width: 243px;
+    height: 35px;
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #f7f6f6;
+    line-height: 35px;
+}
+
+.task-spliter {
+    width: 810px;
+    margin: 10px auto;
+    font-size: 12pt;
+    color: #999;
+    letter-spacing: 2px;
+    line-height: 25px;
+    border-bottom: 1px dotted #666666;
+}
+
+.task-content {
+    margin: 5px 0;
+    line-height: 190%;
+    font-size: 16pt;
+    font-family: FangSong,FangSong_GB2312;
+}
+
+.task-attach {
+    margin: 10px 0 10px 0;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.taskProperties {
+    display: table;
+    margin: 10px 0px 20px 30px;
+    padding-bottom: 10px;
+    font-size: 12pt;
+    color: #999;
+    letter-spacing: 2px;
+    line-height: 25px;
+}
+
+.discussBox {
+    border: 1px solid #91c0ce;
+    margin: 10px 0;
+    padding: 3px;
+}
+
+.discuss-attach {
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.discussToolBar {
+    width: 100%;
+    height: 35px;
+    font-size: 14px;
+    color: #000000;
+    text-align: left;
+    padding: 5px 0 0 10px;
+    background-color: #f7f6f6;
+    letter-spacing: 1px;
+}
+
+#discussEditor {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 5px;
+}
+
+.discussViewBox {
+    width: 880px;
+    margin-bottom: 20px;
+    border-top: 1px solid #cccccc;
+}
+
+.discuss-createbyname {
+    float: left;
+    font-size: 14px;
+    color: #063E7C;
+    font-family: "微软雅黑";
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.discuss-createtime {
+    float: left;
+    font-size: 14px;
+    color: #a7a6a6;
+    font-family: "微软雅黑";
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.discuss-reply {
+    float: left;
+    font-size: 13px;
+    color: #0000e0;
+    font-family: "微软雅黑";
+    margin-left: 30px;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.discuss-modify {
+    float: left;
+    font-size: 13px;
+    color: #0000e0;
+    font-family: "微软雅黑";
+    margin-left: 30px;
+    height: 30px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.discuss-content {
+    font-size: 14px;
+    color: #3b3b3b;
+    font-family: "微软雅黑";
+    padding-top: 5px;
+    padding-left: 15px;
+    padding-right: 10px;
+    line-height: 22px;
+    letter-spacing: 1px;
+}
+
+.discussMessage {
+    line-height: 22px;
+    font-family: "微软雅黑";
+    margin-left: 10px;
+    font-size: 12px;
+    color: #a7a6a6;
+}
+
+.spanBold {
+    font-weight: bolder;
+}
+
+#uploadify {
+    float: left;
+}
+
+.uploadify .uploadify-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#uploadify:hover .uploadify-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+#attachment-display ul.tagit {
+    float: left;
+    width: 688px;
+    min-height: 28px;
+}
+
+#attachment-display input {
+    display: none;
+}
+
+#baseProperties {
+    border: 0px solid red;
+    position: relative;
+    min-height: 350px;
+}
+
+.propertiesPane {
+    font-size: 11pt;
+    color: #999;
+    letter-spacing: 1px;
+    line-height: 26px;
+    padding: 0 10px;
+}
+
+    .propertiesPane div {
+        margin-top: 5px;
+    }
+
+.propertiesButtons {
+    padding: 2px 5px 0 0;
+    width: 100%;
+    text-align: right;
+}
+
+    .propertiesButtons a {
+        padding: 0 5px;
+    }
+
+.propertyValue {
+    font-family: 宋体;
+    font-size: 10pt;
+    letter-spacing: 0px;
+    color: black;
+}
+
+#sendTo {
+    width: 100%;
+}
+
+.header {
+    position: relative;
+    margin-left: 45px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.header-navi {
+    font-size: 14px;
+    color: #1e50a2;
+    letter-spacing: 2px;
+}
+
+.header-operation {
+    position: absolute;
+    top: 0;
+    left: 850px;
+    font-size: 14px;
+    color: #2a6496;
+}

@@ -1,0 +1,27 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="../artdialog.css" />
+    <script src="../artdialog-min.js"></script>
+</head>
+<body style="height: 2400px;">
+    <script>
+        $(function () {
+            var d = dialog({
+                title: '消息',
+                content: '风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》',
+                okValue: "确定",
+                ok: function () {
+                    alert("确定操作");
+                    return true;
+                }
+            });
+
+            d.showModal();
+        });
+    </script>
+</body>
+</html>

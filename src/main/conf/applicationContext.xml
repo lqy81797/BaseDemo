@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- Spring配置文件 -->
+	<!-- 配置自动扫描的包，排除Springmvc扫描的包 -->
+	<context:component-scan base-package="com.ie">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<!-- 国际化信息所在的文件名 -->
+		<property name="basename" value="i18n" />
+		<!-- 如果在国际化资源文件中找不到对应代码的信息，就用这个代码作为名称 -->
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+	<!-- 配置数据源 -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+		<!-- 最大连接数 -->
+		<property name="maxPoolSize">
+			<value>${dataSource.c3p0.max_size}</value>
+		</property>
+
+		<!-- 最小连接数 -->
+		<property name="minPoolSize">
+			<value>${dataSource.c3p0.min_size}</value>
+		</property>
+
+		<!-- 最大空闲时间，超时未被使用则连接被抛弃，单位毫秒 -->
+		<property name="maxIdleTime">
+			<value>${dataSource.c3p0.max_idle_time}</value>
+		</property>
+
+		<!-- 获得连接的超时时间,如果超过这个时间,会抛出异常，单位毫秒 -->
+		<!-- <property name="checkoutTimeout"> <value>${dataSource.c3p0.checkout_timeout}</value> 
+			</property> -->
+
+		<!-- 最大的PreparedStatement的数量 -->
+		<property name="maxStatements">
+			<value>${dataSource.c3p0.max_statements}</value>
+		</property>
+
+		<!-- 每隔120秒检查连接池里的空闲连接 ，单位是秒 -->
+		<property name="idleConnectionTestPeriod">
+			<value>${dataSource.c3p0.idle_test_period}</value>
+		</property>
+
+		<!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 -->
+		<property name="acquireIncrement">
+			<value>${dataSource.c3p0.acquire_increment}</value>
+		</property>
+	</bean>
+	<bean id="dataSource_activity" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="user" value="${jdbc.user}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="driverClass" value="${jdbc.driverClass}" />
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}" />
+	</bean>
+	<!-- 配置JPA的EntityMangerFactory -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="packagesToScan" value="com.ie" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory
+				</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+			</props>
+		</property>
+		<!-- 二级缓存只作用于加注解的部分 -->
+		<property name="sharedCacheMode" value="ENABLE_SELECTIVE"></property>
+	</bean>
+	<!-- 配置事务 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"></property>
+	</bean>
+	<!-- 配置支持基于注解的事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- 配置SpringData -->
+	<jpa:repositories base-package="com.ie"
+		entity-manager-factory-ref="entityManagerFactory"></jpa:repositories>
+	<!-- 1. 配置 SecurityManager! -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="cacheManager" ref="cacheManager"></property>
+		<!-- <property name="realm" ref="jdbcRealm"></property> -->
+		<property name="authenticator" ref="authenticator"></property>
+		<property name="realms">
+			<list>
+				<ref bean="jdbcRealm" />
+				<ref bean="secondRealm" />
+			</list>
+		</property>
+		<!-- 设置记住我的时间为10秒 -->
+		<property name="rememberMeManager.cookie.maxAge" value="10"></property>
+	</bean>
+	<!-- 多个Realm -->
+	<bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+		<property name="authenticationStrategy">
+			<!-- 全部认证成功 -->
+			<!-- <bean class="org.apache.shiro.authc.pam.AllSuccessfulStrategy"></bean> -->
+			<!-- <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean> -->
+			<bean class="org.apache.shiro.authc.pam.FirstSuccessfulStrategy"></bean>
+		</property>
+	</bean>
+
+	<!-- Let's use some enterprise caching support for better performance. You 
+		can replace this with any enterprise caching framework implementation that 
+		you like (Terracotta+Ehcache, Coherence, GigaSpaces, etc -->
+	<!-- 2. 配置 CacheManager. 2.1 需要加入 ehcache 的 jar 包及配置文件. -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<!-- Set a net.sf.ehcache.CacheManager instance here if you already have 
+			one. If not, a new one will be creaed with a default config: <property name="cacheManager" 
+			ref="ehCacheManager"/> -->
+		<!-- If you don't have a pre-built net.sf.ehcache.CacheManager instance 
+			to inject, but you want a specific Ehcache configuration to be used, specify 
+			that here. If you don't, a default will be used.: -->
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml" />
+	</bean>
+
+	<!-- Used by the SecurityManager to access security data (users, roles, 
+		etc). Many other realm implementations can be used too (PropertiesRealm, 
+		LdapRealm, etc. -->
+	<!-- 3. 配置 Realm 3.1 直接配置实现了 org.apache.shiro.realm.Realm 接口的 bean -->
+	<bean id="jdbcRealm" class="com.ie.realms.ShiroRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<!-- 加密算法 -->
+				<property name="hashAlgorithmName" value="MD5"></property>
+				<!-- 加密次数 -->
+				<property name="hashIterations" value="1024"></property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="secondRealm" class="com.ie.realms.SecondRealm">
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<!-- 加密算法 -->
+				<property name="hashAlgorithmName" value="SHA1"></property>
+				<!-- 加密次数 -->
+				<property name="hashIterations" value="1024"></property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 4. 配置 LifecycleBeanPostProcessor. 可以自定的来调用配置在 Spring IOC 容器中 shiro 
+		bean 的生命周期方法. -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<!-- Enable Shiro Annotations for Spring-configured beans. Only run after 
+		the lifecycleBeanProcessor has run: -->
+	<!-- 5. 启用 IOC 容器中使用 shiro 的注解. 但必须在配置了 LifecycleBeanPostProcessor 之后才可以使用. -->
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+		depends-on="lifecycleBeanPostProcessor" />
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<!-- Define the Shiro Filter here (as a FactoryBean) instead of directly 
+		in web.xml - web.xml uses the DelegatingFilterProxy to access this bean. 
+		This allows us to wire things with more control as well utilize nice Spring 
+		things such as PropertiesPlaceholderConfigurer and abstract beans or anything 
+		else we might need: -->
+	<!-- 6. 配置 ShiroFilter. 6.1 id 必须和 web.xml 文件中配置的 DelegatingFilterProxy 
+		的 <filter-name> 一致. 若不一致, 则会抛出: NoSuchBeanDefinitionException. 因为 Shiro 会来 
+		IOC 容器中查找和 <filter-name> 名字对应的 filter bean. -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp" />
+		<property name="successUrl" value="/list.jsp" />
+		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
+		<property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property>
+		<!-- 配置哪些页面需要受保护. 以及访问这些页面需要的权限. 1). anon 可以被匿名访问 2). authc 必须认证(即登录)后才可能访问的页面. 
+			3). logout 登出. 4). roles 角色过滤器 -->
+		<!-- <property name="filterChainDefinitions"> <value> /login.jsp = anon 
+			/shiro/login=anon /shiro/logout=logout /user.jsp=roles[user] /admin.jsp=roles[admin] 
+			# everything else requires authentication: /** = authc </value> </property> -->
+	</bean>
+	<!-- 配置一个 bean, 该 bean 实际上是一个 Map. 通过实例工厂方法的方式 -->
+	<bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionMapBuilder"
+		factory-method="buildFilterChainDefinitionMap"></bean>
+
+	<bean id="filterChainDefinitionMapBuilder" class="com.ie.factory.FilterChainDefinitionMapBuilder"></bean>
+	<bean id="shiroService" class="com.ie.service.ShiroService"></bean>
+
+	<import resource="classpath:activiti-context.xml" />
+</beans>

@@ -1,0 +1,71 @@
+﻿.wrapper1 {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    width: 740px;
+    height: 720px;
+}
+
+.center-pane {
+    width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divData {
+    margin: 2px 0;
+}
+
+    .divData table {
+        border: none;
+        width: 100%;
+    }
+
+
+.tdkey {
+    text-align: right;
+    width: 16.3%;
+    background-color: #F7F7F7;
+    border: solid #dedada;
+    border-width: 1px 1px;
+    padding:2px 2px;
+}
+
+.tdValue {
+    text-align: left;
+    vertical-align: middle;
+    width: 17%;
+    border: solid #dedada;
+    border-width: 1px 1px;
+     padding:2px 2px;
+}
+
+.DataExprience {
+    width: 100%;
+}
+
+    .DataExprience thead th {
+        text-align: center;
+    }
+
+    .DataExprience tbody td {
+        text-align: center;
+        border: solid #dedada;
+        border-width: 1px 1px 1px 1px;
+    }
+
+.error_strings {
+    padding: 10px;
+    color: #db4f33;
+    line-height: 20px;
+    font-size: 12px;
+    border: 10px solid #0866c6;
+    display: none;
+    position: fixed;
+    top: 90px;
+    left: 600px;
+}
+
+.delete {
+    cursor: pointer;
+}

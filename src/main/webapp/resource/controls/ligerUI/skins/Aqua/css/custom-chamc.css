@@ -1,0 +1,100 @@
+﻿
+/*added by neek, 2015-04-02*/
+.l-tree {
+    width: 98% !important;
+}
+
+.l-body:hover {
+    background-color: #eff5fd;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #b8d6fb !important;
+    background-image: linear-gradient(to bottom,#fff,#eff5fd);
+}
+
+.l-tree .l-over span {
+    text-decoration: none;
+}
+
+.l-tree li .l-selected {
+    background-color: #d9e8fb !important;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #84acdd !important;
+    background-image: linear-gradient(to bottom,#fff,#d9e8fb);
+}
+
+.l-tree .l-body {
+    width: 99% !important;
+    min-width: 150px;
+    height: 24px !important;
+    line-height: 24px !important;
+    white-space: nowrap !important;
+    border: 1px solid #fff;
+}
+
+    .l-tree .l-body span {
+        line-height: 22px !important;
+        float: none;
+        text-overflow: ellipsis;
+    }
+
+.l-tree .l-selected span {
+    line-height: 22px;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+.l-tree .l-box {
+    height: 24px;
+}
+
+.l-grid .l-grid-row-cell .l-grid-row-cell-inner {
+    line-height: 26px;
+}
+
+.l-grid-row-cell-checkbox span, .l-grid-hd-cell-checkbox .l-grid-hd-cell-inner div {
+    margin-top: 8px;
+}
+
+.l-grid .l-grid-row-cell .l-grid-tree-space {
+    height: 26px;
+}
+
+.l-grid .l-grid-row-cell .l-grid-row-cell-inner {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.l-box-select .l-box-select-inner {
+    height: 400px;
+}
+
+.l-text-combobox {
+    height: 28px;
+}
+
+.l-text-field {
+    height: 26px;
+}
+
+.l-trigger, .l-trigger-hover, .l-trigger-pressed {
+    width: 16px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.l-trigger-cancel .l-trigger-icon, .l-text-date .l-trigger-cancel .l-trigger-icon {
+    background: none;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+a{
+    color: rgb(0, 102, 204);
+}

@@ -1,25 +1,31 @@
-/**
- * 
- */
 package com.ie.handler;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ie.entities.ItemBank;
+import com.ie.entities.User;
 import com.ie.service.ItemBankService;
+import com.ie.util.BaseController;
+import com.ie.util.DemoUtil;
 
 /**
  * @author lvqingyang
@@ -28,7 +34,7 @@ import com.ie.service.ItemBankService;
  */
 @Controller
 @RequestMapping("/ItemBankController")
-public class ItemBankController {
+public class ItemBankController extends BaseController {
 	@Autowired
 	private ItemBankService itemBankService;
 
@@ -45,12 +51,19 @@ public class ItemBankController {
 		String optionC = request.getParameter("optionC");
 		String optionD = request.getParameter("optionD");
 		String answer = request.getParameter("answer");
+		User createUser = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+		Date createDate = new Date();
 		String[] item = {question, optionA, optionB, optionC, optionD, answer};
-		itemBankService.addItem(item);
+		itemBankService.addItem(item, createUser, createDate);
 		map.put("backInfo", "题目已成功添加");
 		return "item/add";
 	}
 
+	/**
+	 * @author: lvqingyang
+	 * @Description: 下载题目模板excel
+	 * @date: 2018年5月29日 下午5:29:11
+	 */
 	@RequestMapping("/downloadExcel")
 	public void downloadExcel(HttpServletResponse response){
 		String filename = "题目上传模板.xlsx";
@@ -70,8 +83,51 @@ public class ItemBankController {
 		}
 	}
 
+	/**
+	 * @author: lvqingyang
+	 * @Description: 上传添加题库excel
+	 * @date: 2018年5月29日 下午5:29:33
+	 */
 	@RequestMapping("/uploadExcel")
-	public String uploadExcel(@RequestParam(value="excel") MultipartFile file){
-		return null;
+	public String uploadExcel(@RequestParam(value="excel") MultipartFile file, HttpServletRequest request, Map<String,Object> map){
+		Workbook workbook = getWorkbook(file);
+		User createUser = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+		Date createDate = new Date();
+		boolean info = itemBankService.loadExcelDataAndSave(workbook, createUser, createDate);
+		if(info == true){
+			map.put("backInfo", "excel上传题库成功");
+		} else {
+			map.put("backInfo", "excel上传题库失败");
+		}
+		return "item/excel";
+	}
+	
+	@RequestMapping("/manage")
+	@ResponseBody
+	public String manageItem() {
+		List<ItemBank> itemList = itemBankService.listAllItems();
+		return this.getJsonStr(itemList);
+	}
+	
+	@RequestMapping("/search")
+	@ResponseBody
+	public String searchItem(@RequestParam(value="str") String str, HttpServletRequest request){
+		List<ItemBank> itemList = itemBankService.searchItem(str);
+		return this.getJsonStr(itemList);
+	}
+
+	public Workbook getWorkbook(MultipartFile file) {
+		Workbook workbook = null;
+		try {
+			workbook = new HSSFWorkbook(file.getInputStream());
+		} catch (Exception e) {
+			//log
+			try {
+				workbook = new XSSFWorkbook(file.getInputStream());
+			} catch (IOException e1) {
+				//log
+			}
+		}
+		return workbook;
 	}
 }

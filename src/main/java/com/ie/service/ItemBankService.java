@@ -1,8 +1,12 @@
-/**
- * 
- */
 package com.ie.service;
 
+import java.util.Date;
+import java.util.List;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -11,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ie.entities.ItemBank;
+import com.ie.entities.User;
 import com.ie.repository.ItemBankRepository;
 
 /**
@@ -22,13 +27,13 @@ import com.ie.repository.ItemBankRepository;
 public class ItemBankService {
 	@Autowired
 	private ItemBankRepository itemBankDao;
-	
+
 	/**
 	 * @author: lvqingyang
 	 * @Description: 向数据库添加新题目
 	 * @date: 2018年5月28日 下午6:54:44
 	 */
-	public void addItem(String[] item) {
+	public void addItem(String[] item, User createUser, Date createDate) {
 		ItemBank itemBank = new ItemBank();
 		itemBank.setQuestion(item[0]);
 		itemBank.setOptionA(item[1]);
@@ -36,9 +41,16 @@ public class ItemBankService {
 		itemBank.setOptionC(item[3]);
 		itemBank.setOptionD(item[4]);
 		itemBank.setAnswer(item[5]);
+		itemBank.setCreateUser(createUser.getUserName());
+		itemBank.setCreateTime(createDate);
 		itemBankDao.save(itemBank);
 	}
-	
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 生成excel模板
+	 * @date: 2018年5月30日 上午10:09:32
+	 */
 	public XSSFWorkbook getExcel() {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet();
@@ -56,5 +68,59 @@ public class ItemBankService {
 		cell4.setCellValue("选项D");
 		cell5.setCellValue("答案");
 		return workbook;
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 读取excel数据并插入题库
+	 * @date: 2018年5月30日 下午7:20:13
+	 */
+	public boolean loadExcelDataAndSave(Workbook workbook, User createUser, Date createDate) {
+		try{
+			for (int numSheet = 0; numSheet < workbook.getNumberOfSheets(); numSheet++) {
+				Sheet sheet = workbook.getSheetAt(numSheet);
+				if (sheet == null) {
+					continue;
+				}
+				// 循环所有行
+				for (int rowNum = 1; rowNum < sheet.getLastRowNum(); rowNum++) {
+					Row row = sheet.getRow(rowNum);
+					if (!(row.getCell(0).getStringCellValue().trim().equals("")) || row != null) {
+						Cell question = row.getCell(0);
+						Cell optionA = row.getCell(1);
+						Cell optionB = row.getCell(2);
+						Cell optionC = row.getCell(3);
+						Cell optionD = row.getCell(4);
+						Cell answer = row.getCell(5);
+
+						ItemBank itemBank = new ItemBank();
+						itemBank.setQuestion(question.getStringCellValue());
+						itemBank.setOptionA(optionA.getStringCellValue());
+						itemBank.setOptionB(optionB.getStringCellValue());
+						itemBank.setOptionC(optionC.getStringCellValue());
+						itemBank.setOptionD(optionD.getStringCellValue());
+						itemBank.setAnswer(answer.getStringCellValue());
+						itemBank.setCreateUser(createUser.getUserName());
+						itemBank.setCreateTime(createDate);
+					}
+				}
+			}
+		return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	/**
+	 * @author: lvqingyang
+	 * @Description: 列出题库中全部记录
+	 * @date: 2018年5月30日 下午7:25:34
+	 */
+	public List<ItemBank> listAllItems() {
+		return itemBankDao.findAll();
+	}
+	
+	public List<ItemBank> searchItem(String str) {
+		return itemBankDao.searchItem(str);
 	}
 }

@@ -15,14 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ie.entities.Menu;
 import com.ie.entities.Role;
 import com.ie.entities.User;
 import com.ie.service.MenuService;
+import com.ie.util.BaseController;
 import com.ie.util.DemoUtil;
-import com.ie.util.JacksonInstance;
 
 /**
  * @author lvqingyang
@@ -31,7 +29,7 @@ import com.ie.util.JacksonInstance;
  */
 @Controller
 @RequestMapping("/MenuController")
-public class MenuController {
+public class MenuController extends BaseController {
 	@Autowired
 	private MenuService menuService;
 	/**
@@ -71,22 +69,6 @@ public class MenuController {
 		}
 		//将菜单展示集合转换成json
 		return getJsonStr(menuDataList);
-	}
-
-	/**
-	 * @author: lvqingyang
-	 * @Description: 将查询出数据转换成json格式  
-	 * @date: 2018年5月26日 下午3:54:10
-	 */
-	public String getJsonStr(List list){
-		ObjectMapper mapper = JacksonInstance.getMapperInstance(false);
-		String rst = "";
-		try {
-			rst = mapper.writeValueAsString(list);//转换为JSON
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		return rst;
 	}
 
 	/**

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h4>User</h4>
+	<h4>UserPath</h4>
 </body>
 </html>

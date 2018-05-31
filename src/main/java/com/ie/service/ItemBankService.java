@@ -123,4 +123,21 @@ public class ItemBankService {
 	public List<ItemBank> searchItem(String str) {
 		return itemBankDao.searchItem(str);
 	}
+	
+	public boolean update(String id, String[] item) {
+		if (itemBankDao.exists(id)) {
+			ItemBank itemBank = new ItemBank();
+			itemBank.setId(Integer.valueOf(id));
+			itemBank.setQuestion(item[0]);
+			itemBank.setOptionA(item[1]);
+			itemBank.setOptionB(item[2]);
+			itemBank.setOptionC(item[3]);
+			itemBank.setOptionD(item[4]);
+			itemBank.setAnswer(item[5]);
+			itemBankDao.save(itemBank);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

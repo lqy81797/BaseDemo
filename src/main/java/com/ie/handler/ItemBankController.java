@@ -55,6 +55,7 @@ public class ItemBankController extends BaseController {
 		Date createDate = new Date();
 		String[] item = {question, optionA, optionB, optionC, optionD, answer};
 		itemBankService.addItem(item, createUser, createDate);
+		//log
 		map.put("backInfo", "题目已成功添加");
 		return "item/add";
 	}
@@ -114,6 +115,25 @@ public class ItemBankController extends BaseController {
 	public String searchItem(@RequestParam(value="str") String str, HttpServletRequest request){
 		List<ItemBank> itemList = itemBankService.searchItem(str);
 		return this.getJsonStr(itemList);
+	}
+	
+	@RequestMapping("/modify")
+	public String modifyItem(HttpServletRequest request) {
+		String itemId = request.getParameter("itemId");
+		String question = request.getParameter("question");
+		String optionA = request.getParameter("optionA");
+		String optionB = request.getParameter("optionB");
+		String optionC = request.getParameter("optionC");
+		String optionD = request.getParameter("optionD");
+		String answer = request.getParameter("answer");
+		String[] item = {question, optionA, optionB, optionC, optionD, answer};
+		boolean result = itemBankService.update(itemId, item);
+		if(result) {
+			//log
+		} else {
+			//log
+		}
+		return "";
 	}
 
 	public Workbook getWorkbook(MultipartFile file) {

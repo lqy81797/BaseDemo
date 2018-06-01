@@ -12,11 +12,7 @@
 	href="${base}/resource/controls/navbarCss/navbarCss.css"
 	type="text/css" />
 <style>
-#body {
-	width: 70em;
-	max-width: 100%;
-	margin: 0 auto;
-}
+body{margin:0; padding:0;}
 
 iframe {
 	width: 80%;
@@ -112,13 +108,12 @@ iframe {
 			<div id="left" class="col-lg-2 ">
 				<div id="leftTree"></div>
 			</div>
-			<iframe id="frmDemo" src="user.jsp" frameborder="0"
-				scrolling="no" id="test" onload="this.height=100"></iframe>
+			<iframe id="frmDemo" src="user.jsp" width="100%" height="600" onload="changeFrameHeight()" frameborder="0" scrolling="auto"></iframe>
 		</div>
 
 	</div>
 	<script type="text/javascript">
-	var iframe = document.getElementById("frmDemo");
+	/* var iframe = document.getElementById("frmDemo");
 	try{
 	var bHeight = iframe.contentWindow.document.body.scrollHeight;
 	var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
@@ -126,7 +121,13 @@ iframe {
 	iframe.height = height;
 	console.log(height);
 	}catch (ex){}
-	window.setInterval("reinitIframe()", 200);
+	window.setInterval("reinitIframe()", 200); */
+	   function changeFrameHeight(){
+        var ifm= document.getElementById("frmDemo");
+        ifm.height=document.documentElement.clientHeight-56; //56是头顶的高度，和网友估计不一样。
+    }
+    $(function(){ window.onresize=function(){
+            changeFrameHeight(); }});
 	</script>
 </body>
 </html>

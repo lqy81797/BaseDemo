@@ -5,11 +5,12 @@
 
 <!-- css begin -->
 	<!-- bootstrap 核心css -->
-	<link rel="stylesheet" href="${base}/resource/bootstrap/css/bootstrap.min.css" />	
+	<link rel="stylesheet" href="${base}/resource/bootstrap/css/bootstrap.min.css" />
+	<!-- bootstrap-fileinput 核心css -->
+	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput.min.css" />
+	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput-rtl.min.css" />		
 	<!-- table2014 css -->
 	<link rel="stylesheet" href="${base}/resource/controls/jQuery.Table2014/Table2014.css" />
-	<!-- 资产建账系统核心css -->
-	<link rel="stylesheet" href="${base}/resource/controls/asset/core.css" />	
 	<!-- ligerUI css -->
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/Aqua/css/ligerui-all.css" />
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/ligerui-icons.css" />
@@ -26,9 +27,12 @@
 	<script src="${base}/resource/Scripts/jquery-1.11.1.min.js" ></script>
 	<!-- bootstrap核心js -->
 	<script src="${base}/resource/bootstrap/js/bootstrap.min.js" ></script>
-	<!-- 资产建账核心js -->
-	<script src="${base}/resource/controls/asset/core.js" ></script>
-	<script src="${base}/resource/controls/asset/ajax.core.js" ></script>
+	<!-- bootstrap-fileinput js -->
+	<script src="${base}/resource/controls/bootstrap-fileinput/js/fileinput.min.js" ></script>
+	<script src="${base}/resource/controls/bootstrap-fileinput/js/locales/zh.js" ></script>
+	<!-- kindeditor js -->
+	<script src="${base}/resource/controls/kindeditor/kindeditor-all-min.js" ></script>
+	<script src="${base}/resource/controls/kindeditor/lang/zh-CN.js" ></script>
 	<!-- $.cookie -->
 	<script src="${base}/resource/Scripts/jquery.cookie.min.js" ></script>
 	<!-- table2014 js -->

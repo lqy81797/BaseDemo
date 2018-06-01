@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="${base}/resource/bootstrap/css/bootstrap.min.css" />	
 	<!-- table2014 css -->
 	<link rel="stylesheet" href="${base}/resource/controls/jQuery.Table2014/Table2014.css" />
-
+	<!-- bootstrap-fileinput 核心css -->
+	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput.min.css" />
+	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput-rtl.min.css" />		
 	<!-- liger css-->
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/Aqua/css/ligerui-dialog.css" />
 	<!-- form css -->
@@ -27,7 +29,12 @@
 	<script src="${base}/resource/Scripts/jquery-1.11.1.min.js" ></script>
 	<!-- bootstrap核心js -->
 	<script src="${base}/resource/bootstrap/js/bootstrap.min.js" ></script>
-	
+	<!-- bootstrap-fileinput js -->
+	<script src="${base}/resource/controls/bootstrap-fileinput/js/fileinput.min.js" ></script>
+	<script src="${base}/resource/controls/bootstrap-fileinput/js/locales/zh.js" ></script>
+	<!-- kindeditor js -->
+	<script src="${base}/resource/controls/kindeditor/kindeditor-all-min.js" ></script>
+	<script src="${base}/resource/controls/kindeditor/lang/zh-CN.js" ></script>
 	<!-- table2014 js -->
 	<script src="${base}/resource/controls/jQuery.Table2014/Table2014.js" ></script>
 	<!-- 日期插件 js -->

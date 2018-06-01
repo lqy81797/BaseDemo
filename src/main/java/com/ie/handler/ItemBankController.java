@@ -104,6 +104,11 @@ public class ItemBankController extends BaseController {
 	}
 	
 	@RequestMapping("/manage")
+	public String manage() {
+		return "item/manage";
+	}
+	
+	@RequestMapping("/management")
 	@ResponseBody
 	public String manageItem() {
 		List<ItemBank> itemList = itemBankService.listAllItems();
@@ -133,7 +138,19 @@ public class ItemBankController extends BaseController {
 		} else {
 			//log
 		}
-		return "";
+		return "item/manage";
+	}
+	
+	@RequestMapping("/delete")
+	public String deleteItem(HttpServletRequest request) {
+		String itemId = request.getParameter("itemId");
+		boolean result = itemBankService.delete(itemId);
+		if(result) {
+			//log
+		} else {
+			//log
+		}
+		return "item/manage";
 	}
 
 	public Workbook getWorkbook(MultipartFile file) {

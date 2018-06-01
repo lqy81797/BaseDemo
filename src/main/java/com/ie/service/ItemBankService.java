@@ -140,4 +140,13 @@ public class ItemBankService {
 			return false;
 		}
 	}
+	
+	public boolean delete(String id) {
+		if (itemBankDao.exists(id)) {
+			itemBankDao.delete(id);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

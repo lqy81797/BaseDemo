@@ -103,8 +103,18 @@ public class ItemBankController extends BaseController {
 		return "item/excel";
 	}
 	
-	@RequestMapping("/manage")
-	public String manage() {
+	@RequestMapping("/goAdd")
+	public String goAdd() {
+		return "item/add";
+	}
+	
+	@RequestMapping("/goExcel")
+	public String goExcelanage() {
+		return "item/excel";
+	}
+	
+	@RequestMapping("/goManage")
+	public String goManage() {
 		return "item/manage";
 	}
 	
@@ -123,7 +133,15 @@ public class ItemBankController extends BaseController {
 	}
 	
 	@RequestMapping("/modify")
-	public String modifyItem(HttpServletRequest request) {
+	public String modify(HttpServletRequest request, Map<String,Object> map) {
+		String itemId = request.getParameter("itemId");
+		ItemBank item = itemBankService.findItemById(itemId);
+		map.put("item", item);
+		return "item/add";
+	}
+	
+	@RequestMapping("/update")
+	public String updateItem(HttpServletRequest request) {
 		String itemId = request.getParameter("itemId");
 		String question = request.getParameter("question");
 		String optionA = request.getParameter("optionA");

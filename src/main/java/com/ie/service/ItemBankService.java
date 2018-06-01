@@ -124,6 +124,10 @@ public class ItemBankService {
 		return itemBankDao.searchItem(str);
 	}
 	
+	public ItemBank findItemById(String id) {
+		return itemBankDao.findOne(id);
+	}
+	
 	public boolean update(String id, String[] item) {
 		if (itemBankDao.exists(id)) {
 			ItemBank itemBank = new ItemBank();

@@ -8,7 +8,9 @@
 	<link rel="stylesheet" href="${base}/resource/bootstrap/css/bootstrap.min.css" />
 	<!-- bootstrap-fileinput 核心css -->
 	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput.min.css" />
-	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput-rtl.min.css" />		
+	<link rel="stylesheet" href="${base}/resource/controls/bootstrap-fileinput/css/fileinput-rtl.min.css" />
+	<!-- bootstrap-select 核心css -->
+	<link href="${base}/resource/controls/bootstrap-select-1.12.4/dist/css/bootstrap-select.min.css" rel="stylesheet" />		
 	<!-- table2014 css -->
 	<link rel="stylesheet" href="${base}/resource/controls/jQuery.Table2014/Table2014.css" />
 	<!-- ligerUI css -->
@@ -30,6 +32,8 @@
 	<!-- bootstrap-fileinput js -->
 	<script src="${base}/resource/controls/bootstrap-fileinput/js/fileinput.min.js" ></script>
 	<script src="${base}/resource/controls/bootstrap-fileinput/js/locales/zh.js" ></script>
+	<!-- bootstrap-select js -->
+	<script src="${base}/resource/controls/bootstrap-select-1.12.4/dist/js/bootstrap-select.min.js"></script>
 	<!-- kindeditor js -->
 	<script src="${base}/resource/controls/kindeditor/kindeditor-all-min.js" ></script>
 	<script src="${base}/resource/controls/kindeditor/lang/zh-CN.js" ></script>
@@ -47,6 +51,8 @@
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerDialog.js"></script> <!-- 弹出框 -->
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerDrag.js"></script> <!-- 拖拽 -->
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerToolBar.js"></script> <!-- 工具栏 -->
+	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerFilter.js"></script> <!-- 过滤 -->
+	<script src="${base}/resource/controls/ligerUI/js/ligerui.all.js"></script> 
 	<!-- IE 兼容性支持 JAVASCRIPT 开始 -->
 	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 	<!--[if lt IE 9]><script src="${base}/resource/bootstrap/iesupport/ie8-responsive-file-warning.js"></script><![endif]-->

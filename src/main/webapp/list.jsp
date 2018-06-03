@@ -108,7 +108,7 @@ iframe {
 			<div id="left" class="col-lg-2 ">
 				<div id="leftTree"></div>
 			</div>
-			<iframe id="frmDemo" src="user.jsp" width="100%" height="600" onload="changeFrameHeight()" frameborder="0" scrolling="auto"></iframe>
+			<iframe id="frmDemo" src="user.jsp" width="100%" height="600" onload="changeFrameHeight()" frameborder="0" scrolling="no"></iframe>
 		</div>
 
 	</div>

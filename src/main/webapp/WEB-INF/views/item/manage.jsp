@@ -24,8 +24,8 @@
 					<div id="searchbar">
 						用户名：<input id="username" name="username" type="text" /> 
 						证件编号：<input id="number" name="number" type="text" /> 
-						<input id="searchResult"
-							type="button" value="查询" onclick="f_search()" />
+						<input id="search_btn"
+							type="button" value="查询" />
 					</div>
 			</div>
 				<div id="testList"></div>
@@ -75,6 +75,19 @@
 								heightDiff : -5
 							});
 		});
+		
+		 $("#search_btn").click(function(){
+			 var companyName = $("#companyName").val();
+			 companyName = window.encodeURI(window.encodeURI(companyName));
+			 demoGrid.set({
+				 usePager:true,
+				 url:'${base}/externalData/ReportMirrorController/ReportMirrorList.do?hid=${hid}&company='+companyName
+				// parms:[{name:"company",value:companyName}]
+				 
+			 });
+			 demoGrid.reload();
+			 $("#back_btn").attr("style","display:inline-table;");
+		 });
 	</script>
 </body>
 </html>

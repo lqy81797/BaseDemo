@@ -74,8 +74,17 @@
 								rownumbers : true,
 								pageSize : 20,
 								heightDiff : -5
-							});
+			});
 		});
+		 $("#search_btn").click(function(){
+			 var question = $("#question").val();
+			 question = window.encodeURI(window.encodeURI(question));
+			 demoGrid.set({
+				 usePager:false,
+				 url:'${base}//ItemBankController/search.do?question='+question
+			 });
+			 demoGrid.reload();
+		 });
 	</script>
 </body>
 </html>

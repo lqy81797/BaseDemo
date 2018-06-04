@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="${base}/resource/controls/iframe-resizer/iframeResizer.contentWindow.min.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){

@@ -3,11 +3,12 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/include/include.comm.jsp"%>
+<%@ include file="/WEB-INF/include/include.base.jsp"%>
 <%@ include file="/WEB-INF/include/include.main.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<script src="${base}/resource/controls/iframe-resizer/iframeResizer.contentWindow.min.js" ></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>试题编辑</title>
 <script>

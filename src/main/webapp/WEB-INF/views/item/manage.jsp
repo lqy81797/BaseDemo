@@ -8,10 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理试题</title>
+<script src="${base}/resource/controls/iframe-resizer/iframeResizer.contentWindow.min.js" ></script>
 </head>
 <body>
-	<div class="container">
-		<div class="row clearfix">
+	<div class="container-fluid">
+		<div class="row-fluid clearfix">
 			<div class="col-md-12 column">
 				<ul class="breadcrumb">
 					<li><a href="#">首页</a></li>

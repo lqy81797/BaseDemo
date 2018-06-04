@@ -37,6 +37,8 @@
 	<!-- kindeditor js -->
 	<script src="${base}/resource/controls/kindeditor/kindeditor-all-min.js" ></script>
 	<script src="${base}/resource/controls/kindeditor/lang/zh-CN.js" ></script>
+	<!-- iframe-resizer js -->
+	
 	<!-- $.cookie -->
 	<script src="${base}/resource/Scripts/jquery.cookie.min.js" ></script>
 	<!-- table2014 js -->
@@ -53,6 +55,7 @@
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerToolBar.js"></script> <!-- 工具栏 -->
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerFilter.js"></script> <!-- 过滤 -->
 	<script src="${base}/resource/controls/ligerUI/js/ligerui.all.js"></script> 
+
 	<!-- IE 兼容性支持 JAVASCRIPT 开始 -->
 	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
 	<!--[if lt IE 9]><script src="${base}/resource/bootstrap/iesupport/ie8-responsive-file-warning.js"></script><![endif]-->

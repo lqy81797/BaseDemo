@@ -18,31 +18,19 @@
 					<li><a href="#">题库管理</a></li>
 					<li class="active">管理试题</li>
 				</ul>
-
-				<form class="form-horizontal" role="form">
-					<div class="row-fluid">
-						<div class="form-inline">
-							<label for="bid" class="control-label col-md-offset-7"
-								style="font-size: 16px;">试题名称：</label>
-							<select id="bid" class="selectpicker form-control col-md-offset-3"data-live-search="true">
-								<option disabled selected value>请选择试题名称...</option>
-								<%-- <c:forEach items="${CBIBasicList}" var="cbinfo">
-								<option>${cbinfo.company}</option>  
-								<option value="${cbinfo.baseID}">${cbinfo.company}</option>
-								<input type="hidden" id="bid" name="bid" value="${cbinfo.baseID}">
-							</c:forEach> --%>
-							</select>
-							<button class="btn btn-primary" type="button" onclick="Search()">查询</button>
-						</div>
-					</div>
-				</form>
-
-
-				<div id="testList"></div>
 			</div>
 		</div>
-	</div>
-	</div>
+		<div class="col-md-12 column">
+					<div id="searchbar">
+						用户名：<input id="username" name="username" type="text" /> 
+						证件编号：<input id="number" name="number" type="text" /> 
+						<input id="searchResult"
+							type="button" value="查询" onclick="f_search()" />
+					</div>
+			</div>
+				<div id="testList"></div>
+			</div>
+
 	<script type="text/javascript">
 		var checkedCustomer = [];
 		var demoGrid = null;

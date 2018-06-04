@@ -121,7 +121,7 @@ public class ItemBankService {
 	}
 	
 	public List<ItemBank> searchItem(String str) {
-		return itemBankDao.searchItem(str);
+		return itemBankDao.searchItem("%" + str + "%");
 	}
 	
 	public ItemBank findItemById(String id) {

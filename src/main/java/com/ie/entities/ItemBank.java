@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -49,6 +50,9 @@ public class ItemBank implements Serializable {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
+	
+	@Transient
+	private String time;
 
 	/**
 	 * @return id
@@ -174,6 +178,20 @@ public class ItemBank implements Serializable {
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	/**
+	 * @return time
+	 */
+	public String getTime() {
+		return time;
+	}
+
+	/**
+	 * @param time 要设置的 time
+	 */
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 }

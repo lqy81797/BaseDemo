@@ -55,7 +55,7 @@
 										},
 										{
 											display : '创建时间',
-											name : 'createTime',
+											name : 'time',
 											width : 250,
 											align : 'left'
 										},
@@ -83,12 +83,14 @@
 		});
 		
 		 $("#search_btn").click(function(){
-			 var question = $("#question").val();
+			/*  var question = $("#question").val();
 			 question = window.encodeURI(window.encodeURI(question));
 			 demoGrid.set({
 				 usePager:false,
-				 url:'${base}/ItemBankController/search.do?str='+question
+				 url:'${base}/ItemBankController/search.do?question='+question
 			 });
+			 demoGrid.reload(); */
+			 demoGrid.setParm("question", $("input[name='question']").val());
 			 demoGrid.reload();
 		 });
 	</script>

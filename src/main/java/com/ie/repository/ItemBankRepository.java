@@ -18,6 +18,6 @@ import com.ie.entities.Menu;
  * @date: 2018年5月28日 下午6:09:46 
  */
 public interface ItemBankRepository extends JpaRepository<ItemBank, String>, JpaSpecificationExecutor<ItemBank> {
-	@Query(value="from ItemBank i where question like %?1%")
+	@Query(value="from ItemBank i where question like ?1")
 	public List<ItemBank> searchItem(String str);
 }

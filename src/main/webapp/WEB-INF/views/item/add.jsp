@@ -25,15 +25,15 @@
 					<li class="active">新增试题</li>
 				</ul>
 				<div class="row-fluid ">
-					<form action="#" role="form">
+					<form action="${base}/ItemBankController/add" role="form">
 						<div class = "form-group">
 						<div class="col-md-2 column">
 							<h4 class="text-center" style="padding-top:5%;">试题题干： </h4>
 						</div>
 						<div class="col-md-10 column">
-							<textarea id="testContent" class="form-control" name="content"
+							<textarea id="testContent" class="form-control" name="question"
 								style="width: 100%; height: 30%;">
-					&lt;strong&gt;请输入试题题干&lt;/strong&gt;
+					请输入试题题干
 					</textarea>
 						</div>
 						</div>
@@ -73,7 +73,7 @@
 						<h4 class="text-center" style="padding-top:5%;">试题答案： </h4>
 						</div>
 						<div class="col-md-10 column">
-							<select class="form-control">
+							<select name="answer" class="form-control">
 								<option value="A">A</option>
 								<option value="B">B</option>
 								<option value="C">C</option>

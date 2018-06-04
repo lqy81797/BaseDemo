@@ -34,9 +34,12 @@ function initFileInput(ctrlName,uploadUrl) {
             $("#path").attr("value",data.response);  
     });  
 }  
+function downloadDemo(){
+	 window.location.href="${base}/ItemBankController/downloadExcel.do";
+}
   
 $(function () {  
-    var path="${base}/admin/product/upload.htm";  
+    var path="${base}/ItemBankController/uploadExcel.do";  
     initFileInput("file",path);  
       
 })  
@@ -55,12 +58,12 @@ $(function () {
 				<h4 class="text-info text-left">
 					<div>1、下载Excel模板</div>
 				</h4>
-				<input type="button" ,class="btn btn-link" value="点击下载Excel模板">
+				<input type="button" ,class="btn btn-link" value="点击下载Excel模板" onClick="downloadDemo()">
 				<h4 class="text-info text-left">2、上传试题</h4>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">文件上传:</label>
 					<div class="col-md-12">
-						<input id="file" name="myfile" type="file"
+						<input id="file" name="excel" type="file"
 							data-show-caption="true">
 						<p class="help-block">支持xls、xlsx格式</p>
 					</div>

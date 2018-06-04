@@ -40,6 +40,10 @@ public class User implements Serializable {
 	private String name;
 	
 	private Integer roleId;
+	
+	private String email;
+	
+	private String phone;
 
 	/**
 	 * @return id
@@ -109,6 +113,34 @@ public class User implements Serializable {
 	 */
 	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
+	}
+
+	/**
+	 * @return email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email 要设置的 email
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	/**
+	 * @return phone
+	 */
+	public String getPhone() {
+		return phone;
+	}
+
+	/**
+	 * @param phone 要设置的 phone
+	 */
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }

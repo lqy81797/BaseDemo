@@ -42,7 +42,6 @@
 			</div>
 		</div>
 	</div>
-	</div>
 	<script type="text/javascript">
 		var checkedCustomer = [];
 		var demoGrid = null;
@@ -55,13 +54,13 @@
 								columns : [
 										{
 											display : '所属题库',
-											name : 'company',
+											name : 'subject',
 											width : 250,
 											align : 'left'
 										},
 										{
 											display : '创建人',
-											name : 'cardNo',
+											name : 'createUser',
 											width : 250,
 											align : 'left'
 										},
@@ -80,7 +79,7 @@
 
 											}
 										} ],
-								url : '${base}/externalData/ReportMirrorController/ReportMirrorList.do?hid=${hid}',
+								url : '${base}/ItemBankController/management.do',
 								usePager : true,
 								rownumbers : true,
 								pageSize : 20,

@@ -31,6 +31,16 @@ import com.ie.util.DemoUtil;
 public class ApproveController extends BaseController {
 	@Autowired
 	private ApproveService approveService;
+	
+	@RequestMapping("/goApply")
+	public String goApply() {
+		return "approve/apply";
+	}
+	
+	@RequestMapping("/goTodo")
+	public String goTodo() {
+		return "approve/todo";
+	}
 
 	@Transactional
 	@RequestMapping("/add")
@@ -42,7 +52,7 @@ public class ApproveController extends BaseController {
 		int status = 0;
 		Approve approve = approveService.addApprove(subject, remark, userId, status);
 		map.put("approve", approve);
-		return "approve/my";
+		return "approve/apply";
 	}
 	
 	@RequestMapping("/todo")

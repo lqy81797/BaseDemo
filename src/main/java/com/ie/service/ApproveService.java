@@ -52,8 +52,6 @@ public class ApproveService {
 	 * @author: lvqingyang
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月1日 下午3:26:51
-	 * @param:描述1描述
-	 * @return：返回结果描述
 	 */
 	public List<Approve> listAllApproving(String userName) {
 		return approveDao.findByUserId(userName);

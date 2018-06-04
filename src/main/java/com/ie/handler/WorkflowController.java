@@ -3,6 +3,8 @@
  */
 package com.ie.handler;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.ie.entities.Approve;
+import com.ie.entities.User;
 import com.ie.service.WorkflowService;
+import com.ie.util.BaseController;
+import com.ie.util.DemoUtil;
 
 /**
  * @author lvqingyang
@@ -20,27 +26,26 @@ import com.ie.service.WorkflowService;
  */
 @Controller
 @RequestMapping("/WorkflowController")
-public class WorkflowController {
+public class WorkflowController extends BaseController {
 	@Autowired
 	private WorkflowService workflowService;
 
 	// 启动流程
 	@RequestMapping("/startProcess")
-	@ResponseBody
 	public String startProcess(HttpServletRequest request, @RequestParam("id") String id) {
 		// 更新请假状态，启动流程实例，让启动的流程实例关联业务
-		workflowService.startProcess(request, id);
-		return "approve/my";
+		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+		String userName = user.getUserName();
+		String taskId = workflowService.startProcess(userName, id);
+		workflowService.saveSubmitTask(taskId);
+		return "approve/apply";
 	}
 
 	//提交任务
 	@RequestMapping("/submit")
-	@ResponseBody
-	public String submitTask(HttpServletRequest request, String taskId) {
-		String remark = request.getParameter("remark");
-		String id = request.getParameter("id");
-
-		workflowService.saveSubmitTask(request, id, taskId, remark);
+	public String submitTask(HttpServletRequest request, String id) {
+		String taskId = workflowService.getTaskId(id);
+		workflowService.saveSubmitTask(taskId);
 		return "approve/list";
 	}
 }

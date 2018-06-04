@@ -46,6 +46,7 @@ public class WorkflowController extends BaseController {
 	public String submitTask(HttpServletRequest request, String id) {
 		String taskId = workflowService.getTaskId(id);
 		workflowService.saveSubmitTask(taskId);
+		workflowService.setApprove(id);
 		return "approve/list";
 	}
 }

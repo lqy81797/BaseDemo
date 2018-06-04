@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ie.entities.Approve;
 import com.ie.repository.ApproveRepository;
 
 /**
@@ -64,6 +65,17 @@ public class WorkflowService {
 				.taskAssignee("teacher")
 				.singleResult();
 		return task.getId();
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月4日 下午9:06:29
+	 */
+	public void setApprove(String id) {
+		Approve approve = approveDao.findOne(id);
+		approve.setStatus(1);
+		approveDao.save(approve);
 	}
 
 }

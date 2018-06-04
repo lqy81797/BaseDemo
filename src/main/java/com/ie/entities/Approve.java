@@ -37,7 +37,7 @@ public class Approve implements Serializable {
 	
 	private String remark;
 	
-	private int state;
+	private int status;
 	
 	private String userId;
 	
@@ -81,16 +81,16 @@ public class Approve implements Serializable {
 		this.remark = remark;
 	}
 	/**
-	 * @return state
+	 * @return status
 	 */
-	public int getState() {
-		return state;
+	public int getStatus() {
+		return status;
 	}
 	/**
-	 * @param state 要设置的 state
+	 * @param status 要设置的 status
 	 */
-	public void setState(int state) {
-		this.state = state;
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	/**
 	 * @return userId

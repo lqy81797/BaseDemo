@@ -16,6 +16,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,6 +44,7 @@ public class ItemBankController extends BaseController {
 	 * @Description: 添加题目
 	 * @date: 2018年5月28日 下午6:55:30
 	 */
+	@Transactional
 	@RequestMapping("/add")
 	public String addItem(HttpServletRequest request, Map<String,Object> map) {
 		String question = request.getParameter("question");
@@ -89,6 +91,7 @@ public class ItemBankController extends BaseController {
 	 * @Description: 上传添加题库excel
 	 * @date: 2018年5月29日 下午5:29:33
 	 */
+	@Transactional
 	@RequestMapping("/uploadExcel")
 	public String uploadExcel(@RequestParam(value="excel") MultipartFile file, HttpServletRequest request, Map<String,Object> map){
 		Workbook workbook = getWorkbook(file);
@@ -140,6 +143,7 @@ public class ItemBankController extends BaseController {
 		return "item/add";
 	}
 	
+	@Transactional
 	@RequestMapping("/update")
 	public String updateItem(HttpServletRequest request) {
 		String itemId = request.getParameter("itemId");
@@ -159,6 +163,7 @@ public class ItemBankController extends BaseController {
 		return "item/manage";
 	}
 	
+	@Transactional
 	@RequestMapping("/delete")
 	public String deleteItem(HttpServletRequest request) {
 		String itemId = request.getParameter("itemId");

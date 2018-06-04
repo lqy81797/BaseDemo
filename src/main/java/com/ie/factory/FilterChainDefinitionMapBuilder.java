@@ -5,7 +5,6 @@ public class FilterChainDefinitionMapBuilder {
 
 	public LinkedHashMap<String, String> buildFilterChainDefinitionMap(){
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();
-		//模拟从数据库中取值存入map
 		map.put("/login.jsp", "anon");
 		map.put("/shiro/login", "anon");
 		map.put("/shiro/logout", "logout");

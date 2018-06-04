@@ -22,10 +22,8 @@
 		</div>
 		<div class="col-md-12 column">
 					<div id="searchbar">
-						用户名：<input id="username" name="username" type="text" /> 
-						证件编号：<input id="number" name="number" type="text" /> 
-						<input id="search_btn"
-							type="button" value="查询" />
+						问题：<input id="question" name="question" type="text" /> 
+						<input id="search_btn" type="button" value="查询" />
 					</div>
 			</div>
 				<div id="testList"></div>
@@ -42,14 +40,20 @@
 								checkbox : true,
 								columns : [
 										{
-											display : '所属题库',
-											name : 'company',
+											display : '题目',
+											name : 'question',
 											width : 250,
 											align : 'left'
 										},
 										{
 											display : '创建人',
-											name : 'cardNo',
+											name : 'createUser',
+											width : 250,
+											align : 'left'
+										},
+										{
+											display : '创建时间',
+											name : 'createTime',
 											width : 250,
 											align : 'left'
 										},
@@ -68,25 +72,21 @@
 
 											}
 										} ],
-								url : '${base}/externalData/ReportMirrorController/ReportMirrorList.do?hid=${hid}',
-								usePager : true,
+								url : '${base}//ItemBankController/management.do',
+								usePager : false,
 								rownumbers : true,
-								pageSize : 20,
 								heightDiff : -5
 							});
 		});
 		
 		 $("#search_btn").click(function(){
-			 var companyName = $("#companyName").val();
-			 companyName = window.encodeURI(window.encodeURI(companyName));
+			 var question = $("#question").val();
+			 question = window.encodeURI(window.encodeURI(question));
 			 demoGrid.set({
-				 usePager:true,
-				 url:'${base}/externalData/ReportMirrorController/ReportMirrorList.do?hid=${hid}&company='+companyName
-				// parms:[{name:"company",value:companyName}]
-				 
+				 usePager:false,
+				 url:'${base}//ItemBankController/search.do?question='+question
 			 });
 			 demoGrid.reload();
-			 $("#back_btn").attr("style","display:inline-table;");
 		 });
 	</script>
 </body>

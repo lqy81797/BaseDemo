@@ -18,30 +18,17 @@
 					<li><a href="#">题库管理</a></li>
 					<li class="active">管理试题</li>
 				</ul>
-
-				<form class="form-horizontal" role="form">
-					<div class="row-fluid">
-						<div class="form-inline">
-							<label for="bid" class="control-label col-md-offset-7"
-								style="font-size: 16px;">试题名称：</label>
-							<select id="bid" class="selectpicker form-control col-md-offset-3"data-live-search="true">
-								<option disabled selected value>请选择试题名称...</option>
-								<%-- <c:forEach items="${CBIBasicList}" var="cbinfo">
-								<option>${cbinfo.company}</option>  
-								<option value="${cbinfo.baseID}">${cbinfo.company}</option>
-								<input type="hidden" id="bid" name="bid" value="${cbinfo.baseID}">
-							</c:forEach> --%>
-							</select>
-							<button class="btn btn-primary" type="button" onclick="Search()">查询</button>
-						</div>
-					</div>
-				</form>
-
-
-				<div id="testList"></div>
 			</div>
 		</div>
-	</div>
+		<div class="col-md-12 column">
+					<div id="searchbar">
+						问题：<input id="question" name="question" type="text" /> 
+						<input id="search_btn" type="button" value="查询" />
+					</div>
+			</div>
+				<div id="testList"></div>
+			</div>
+
 	<script type="text/javascript">
 		var checkedCustomer = [];
 		var demoGrid = null;
@@ -53,14 +40,20 @@
 								checkbox : true,
 								columns : [
 										{
-											display : '所属题库',
-											name : 'subject',
+											display : '题目',
+											name : 'question',
 											width : 250,
 											align : 'left'
 										},
 										{
 											display : '创建人',
 											name : 'createUser',
+											width : 250,
+											align : 'left'
+										},
+										{
+											display : '创建时间',
+											name : 'createTime',
 											width : 250,
 											align : 'left'
 										},
@@ -79,13 +72,22 @@
 
 											}
 										} ],
-								url : '${base}/ItemBankController/management.do',
-								usePager : true,
+								url : '${base}//ItemBankController/management.do',
+								usePager : false,
 								rownumbers : true,
-								pageSize : 20,
 								heightDiff : -5
 							});
 		});
+		
+		 $("#search_btn").click(function(){
+			 var question = $("#question").val();
+			 question = window.encodeURI(window.encodeURI(question));
+			 demoGrid.set({
+				 usePager:false,
+				 url:'${base}//ItemBankController/search.do?question='+question
+			 });
+			 demoGrid.reload();
+		 });
 	</script>
 </body>
 </html>

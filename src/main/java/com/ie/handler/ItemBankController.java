@@ -179,11 +179,12 @@ public class ItemBankController extends BaseController {
 	public Workbook getWorkbook(MultipartFile file) {
 		Workbook workbook = null;
 		try {
-			workbook = new HSSFWorkbook(file.getInputStream());
+			workbook = new XSSFWorkbook(file.getInputStream());
+			
 		} catch (Exception e) {
 			//log
 			try {
-				workbook = new XSSFWorkbook(file.getInputStream());
+				workbook = new HSSFWorkbook(file.getInputStream());
 			} catch (IOException e1) {
 				//log
 			}

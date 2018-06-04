@@ -21,7 +21,8 @@ function initFileInput(ctrlName,uploadUrl) {
         uploadUrl: uploadUrl,  //上传地址  
         showUpload: true, //是否显示上传按钮  
         showRemove:true,  
-        dropZoneEnabled: false,  
+        dropZoneEnabled: false,
+        enctype:'multipart/form-data',
         showCaption: true,//是否显示标题   
             allowedFileExtensions:  ['xls','xlsx'],  
             maxFileSize : 2000,  
@@ -59,6 +60,7 @@ $(function () {
 					<div>1、下载Excel模板</div>
 				</h4>
 				<input type="button" ,class="btn btn-link" value="点击下载Excel模板" onClick="downloadDemo()">
+				<form role="form" method="post" class="form-horizontal">
 				<h4 class="text-info text-left">2、上传试题</h4>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">文件上传:</label>
@@ -68,6 +70,7 @@ $(function () {
 						<p class="help-block">支持xls、xlsx格式</p>
 					</div>
 				</div>
+			</form>
 			</div>
 		</div>
 	</div>

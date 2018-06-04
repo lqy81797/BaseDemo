@@ -29,4 +29,25 @@ public class BaseController {
 		}
 		return rst;
 	}
+	
+	/**
+	 * 将查询出数据转换成json格式  
+	 */
+	public String getJsonStr(Page page, List list){
+		ObjectMapper mapper = JacksonInstance.getMapperInstance(false);
+		String rst = "";
+		try {
+			rst = mapper.writeValueAsString(list);//转换为JSON
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		int totalCount=page.getTotalResult();//所有记录数
+		StringBuilder sb = new StringBuilder(); //修正格式符合grid要求的json格式
+		sb.append("{\"Rows\":");
+		sb.append(rst);
+		sb.append(",\"Total\":");
+		sb.append(totalCount+"}");//追加所有记录数到json
+		rst = sb.toString();
+		return rst;
+	}
 }

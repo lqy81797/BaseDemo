@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/include/include.comm.jsp"%>
-<%@ include file="/WEB-INF/include/include.base.jsp"%>
+
 <%@ include file="/WEB-INF/include/include.main.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,11 +31,13 @@
 
 	<script type="text/javascript">
 		var checkedCustomer = [];
+		alert("sasa");
 		var demoGrid = null;
 		$(function() {
+			
 			demoGrid = $("#testList")
 					.ligerGrid(
-							{
+							{	
 								title: '试题管理表',
 								checkbox : true,
 								columns : [
@@ -72,9 +74,10 @@
 
 											}
 										} ],
-								url : '${base}//ItemBankController/management.do',
-								usePager : false,
+								url : '${base}/ItemBankController/management',
+								usePager : true,
 								rownumbers : true,
+								height:'50%',
 								heightDiff : -5
 							});
 		});
@@ -84,7 +87,7 @@
 			 question = window.encodeURI(window.encodeURI(question));
 			 demoGrid.set({
 				 usePager:false,
-				 url:'${base}//ItemBankController/search.do?question='+question
+				 url:'${base}/ItemBankController/search.do?str='+question
 			 });
 			 demoGrid.reload();
 		 });

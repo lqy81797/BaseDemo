@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,7 @@ import com.ie.entities.User;
 import com.ie.service.ItemBankService;
 import com.ie.util.BaseController;
 import com.ie.util.DemoUtil;
+import com.ie.util.Page;
 
 /**
  * @author lvqingyang
@@ -121,11 +123,11 @@ public class ItemBankController extends BaseController {
 		return "item/manage";
 	}
 	
-	@RequestMapping("/management")
+	@RequestMapping(value = "/management", method = {RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public String manageItem() {
+	public String manageItem(Page page) {
 		List<ItemBank> itemList = itemBankService.listAllItems();
-		return this.getJsonStr(itemList);
+		return this.getJsonStr(page, itemList);
 	}
 	
 	@RequestMapping("/search")

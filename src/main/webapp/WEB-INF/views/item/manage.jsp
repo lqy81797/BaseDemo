@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/include/include.comm.jsp"%>
-
 <%@ include file="/WEB-INF/include/include.main.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理试题</title>
-<script src="${base}/resource/controls/iframe-resizer/iframeResizer.contentWindow.min.js" ></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -21,22 +19,26 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-md-12 column">
-					<div id="searchbar">
-						问题：<input id="question" name="question" type="text" /> 
-						<input id="search_btn" type="button" value="查询" />
-					</div>
+		<form id="search_form">
+			<div id="searchbar">
+				<div class="l-panel-search-item">
+					查询问题： <input id="param" name="question.name" value="" />
+				</div>
+				<div class="l-panel-search-item">
+					<div id="searchbtn"></div>
+				</div>
 			</div>
-				<div id="testList"></div>
-			</div>
- <a class="l-button" style="width:120px" onclick="getSelected()">获取选中的值(选择行)</a>
-  <br>
-   <a class="l-button" style="width:120px" onclick="getData()">获取当前的值</a>
+		</form>
+		<div class="l-loading" style="display: block" id="pageloading"></div>
+		<div class="l-clear"></div>
+		<div id="testList"></div>
+		<!-- <div id="scale" style="text-align: right;"></div> -->
+	</div>
 	<script type="text/javascript">
 	 	var optionData = [{ answer: "A", text: 'A' },{ answer: "B", text: 'B' },{ answer: "C", text: 'C' },{ answer: "D", text: 'D' }];
 		var demoGrid = null;
-		$(function() {
-			
+		var griddata = null; 
+		$(function(){  
 			demoGrid = $("#testList")
 					.ligerGrid(
 							{	
@@ -116,9 +118,48 @@
 								isScroll: false,
 								usePager : true,
 								rownumbers : true,
-								heightDiff : -5
+								parms : $('form').serializeArray(),//这里是关键，传递搜索条件的参数  serializeArray是jquery自带的吧form转json传递的方法
+								heightDiff : -5,
+								
 							});
-		});
+		    });
+		    
+		$(function(){  
+			  $.ajax({  
+			  url: '${base}/ItemBankController/management',  
+			  dataType: 'json',  
+			  type: 'POST',  
+			  success: function (result) {  
+			    griddata=result;  
+			    setgrid(griddata);  
+			  }  
+			  });  
+			}); 
+		
+		function setgrid(griddata){  
+	              //生成一个检索按钮
+	             $("#searchbtn").ligerButton({
+	                 click : function() {
+	                	 demoGrid.options.data = $.extend(true, {}, griddata);  
+	                	 demoGrid.loadData(f_getWhere()); 
+	                 },
+	                 text : '检索',
+	                 width : 60
+	             });
+	             $("#pageloading").hide();
+
+			};
+		    function f_getWhere(){  
+		    	  //  alert(JSON.stringify(griddata));  
+		    	  if (!demoGrid) return null;  
+		    	  var ques = $('#param').val();
+		    	    var clause = function (rowdata, rowindex)	    
+		    	    {  
+		    	       return (rowdata.question.indexOf(ques) > -1);  
+		    	    };  
+		    	    return clause;  
+		    	}
+		    
 		function beginEdit(rowid) { 
 			demoGrid.beginEdit(rowid);
         }
@@ -190,7 +231,7 @@
             	
             }
         }
-        function getSelected()
+      /*   function getSelected()
         { 	
             var row = demoGrid.getSelectedRow();
             var itemId = row.id;
@@ -206,19 +247,19 @@
         { 
             var data = demoGrid.getData();
             alert(JSON.stringify(data));
-        } 
+        }  */
         
-		 $("#search_btn").click(function(){
+		/*  $("#search_btn").click(function(){
 			/*  var question = $("#question").val();
 			 question = window.encodeURI(window.encodeURI(question));
 			 demoGrid.set({
 				 usePager:false,
 				 url:'${base}/ItemBankController/search.do?question='+question
 			 });
-			 demoGrid.reload(); */
+			 demoGrid.reload(); 
 			 demoGrid.setParm("question", $("input[name='question']").val());
 			 demoGrid.reload();
-		 });
+		 }); */
 	</script>
 </body>
 </html>

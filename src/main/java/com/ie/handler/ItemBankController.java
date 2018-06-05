@@ -164,8 +164,10 @@ public class ItemBankController extends BaseController {
 		String optionC = request.getParameter("optionC");
 		String optionD = request.getParameter("optionD");
 		String answer = request.getParameter("answer");
+		User createUser = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+		Date createDate = new Date();
 		String[] item = {question, optionA, optionB, optionC, optionD, answer};
-		boolean result = itemBankService.update(itemId, item);
+		boolean result = itemBankService.update(itemId, item, createUser, createDate);
 		if(result) {
 			//log
 		} else {

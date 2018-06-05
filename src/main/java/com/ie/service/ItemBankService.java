@@ -125,11 +125,10 @@ public class ItemBankService {
 	}
 	
 	public ItemBank findItemById(String id) {
-		return itemBankDao.findOne(id);
+		return itemBankDao.findOne(Integer.valueOf(id));
 	}
 	
-	public boolean update(String id, String[] item) {
-		if (itemBankDao.exists(id)) {
+	public boolean update(String id, String[] item, User createUser, Date createDate) {
 			ItemBank itemBank = new ItemBank();
 			itemBank.setId(Integer.valueOf(id));
 			itemBank.setQuestion(item[0]);
@@ -138,19 +137,14 @@ public class ItemBankService {
 			itemBank.setOptionC(item[3]);
 			itemBank.setOptionD(item[4]);
 			itemBank.setAnswer(item[5]);
+			itemBank.setCreateTime(createDate);
+			itemBank.setCreateUser(createUser.getUserName());
 			itemBankDao.save(itemBank);
 			return true;
-		} else {
-			return false;
-		}
 	}
 	
 	public boolean delete(String id) {
-		if (itemBankDao.exists(id)) {
-			itemBankDao.delete(id);
+			itemBankDao.delete(Integer.valueOf(id));
 			return true;
-		} else {
-			return false;
-		}
 	}
 }

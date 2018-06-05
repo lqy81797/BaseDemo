@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/include/include.comm.jsp"%>
 <%@ include file="/WEB-INF/include/include.base.jsp"%>
 <%@ include file="/WEB-INF/include/include.main.jsp"%>
@@ -11,11 +9,12 @@
 <script src="${base}/resource/controls/iframe-resizer/iframeResizer.contentWindow.min.js" ></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>试题编辑</title>
-<script>
+<!-- <script>
 	KindEditor.ready(function(K) {
 		window.editor = K.create('#testContent');
 	});
-</script>
+	
+</script> -->
 </head>
 <body>
 	<div class="container-fluid">
@@ -26,15 +25,14 @@
 					<li class="active">新增试题</li>
 				</ul>
 				<div class="row-fluid ">
-					<form action="${base}/ItemBankController/add" role="form">
+					<form role="form" id="testform" accept-charset="UTF-8">
 						<div class = "form-group">
 						<div class="col-md-2 column">
 							<h4 class="text-center" style="padding-top:5%;">试题题干： </h4>
 						</div>
 						<div class="col-md-10 column">
 							<textarea id="testContent" class="form-control" name="question"
-								style="width: 100%; height: 30%;">
-					请输入试题题干
+								style="width: 100%; height: 10%;">请输入试题题干
 					</textarea>
 						</div>
 						</div>
@@ -84,12 +82,38 @@
 						</div>
 
 						<div class="col-md-4 col-md-offset-5 column">
-							<input type="submit" class="btn btn-default btn-success" value="提交">
+							<input type="button" class="btn btn-default btn-success" onclick="upload() "value="提交">
 							<input type="button" class="btn btn-default btn-danger col-md-offset-2" value="返回"></button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
+		
+		<script>
+		function upload(){
+			var form = new FormData(document.getElementById("testform"));
+			$.ajax({
+				url:"${base}/ItemBankController/add.do",
+				type:"post",
+				data:form,
+				processData:false,
+				contentType:false,
+				success:function(data){
+					console.log(data);
+					alert("成功添加");
+					location.reload(true);
+				},
+				error:function(e){
+					alert("错误！！");
+				}
+				
+			});
+			
+		}
+		
+		
+		
+		</script>
 </body>
 </html>

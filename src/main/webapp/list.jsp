@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="${base}/resource/controls/iframe-resizer/iframeResizer.min.js" ></script>
+<%-- <script src="${base}/resource/controls/iframe-resizer/iframeResizer.min.js" ></script> --%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
@@ -19,15 +19,13 @@ body{margin:0; padding:0;}
 	
 	font-size:16px;
 }
-/* iframe {
+iframe {
 	width: 80%;
 	margin: 0 0 1em;
 	border: 0;
-	position:absolute;
-} */
+}
 </style>
 <script>
-	$('iframe').iFrameResize([{log: true}]);
 	var selectedNode;
 	var tree;
 	var proid = '${sessionScope.id}';
@@ -115,7 +113,7 @@ body{margin:0; padding:0;}
 			<div id="left" class="col-lg-2 ">
 				<div id="leftTree"></div>
 			</div>
-			<iframe id="frmDemo" src="user.jsp" width="83%" height="600"  frameborder="0" scrolling="no"></iframe>
+			<iframe id="frmDemo" src="user.jsp" width="83%" frameborder="0" scrolling="no"onload="changeFrameHeight()" ></iframe>
 		</div>
 
 	</div>
@@ -128,13 +126,13 @@ body{margin:0; padding:0;}
 	iframe.height = height;
 	console.log(height);
 	}catch (ex){}
-	window.setInterval("reinitIframe()", 200); 
+	window.setInterval("reinitIframe()", 200); */
 	   function changeFrameHeight(){
         var ifm= document.getElementById("frmDemo");
         ifm.height=document.documentElement.clientHeight-56; //56是头顶的高度，和网友估计不一样。
     }
     $(function(){ window.onresize=function(){
-            changeFrameHeight(); }}); */
+            changeFrameHeight(); }}); 
 	</script>
 </body>
 </html>

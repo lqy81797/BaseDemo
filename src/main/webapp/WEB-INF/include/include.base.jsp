@@ -43,7 +43,7 @@
 	<script src="${base}/resource/controls/validator/jquery.metadata.js"></script>
 	<script src="${base}/resource/controls/validator/jquery.validate.js"></script>
 	<script src="${base}/resource/controls/validator/additional-methods.js"></script>
-	<script src="${base}/resource/controls/validator/my-methods.js"></script>
+<%-- 	<script src="${base}/resource/controls/validator/my-methods.js"></script> --%>
 	<script src="${base}/resource/controls/validator/localization/messages_zh.js"></script>
 	<!-- ligerUI js -->
 	<script src="${base}/resource/controls/ligerUI/js/core/base.js" ></script> <!-- base js -->

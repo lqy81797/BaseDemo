@@ -77,35 +77,27 @@ body {
 </style>
 <script type="text/javascript">
 	function toRegisterPage() {
-		window.location.href = "${base}/reg/RegisterController/register.do"
+		window.location.href = "${base}/RegisterController/register.do"
 	}
 	function submitForm() {
 		$("#loginForm").submit();
 	}
 </script>
-<title>登录页面</title>
 
+<title>登录页面</title>
 </head>
 <body>
 	<div class="signin">
-		<div class="signin-head">
-			<img src="${base}/resource/images/user.png" alt="登录图标"
-				class="img-circle" style="width: 120px; height: 120px;">
-		</div>
-		<form class="form-signin" role="form" method="post" id="loginForm"
-			action="shiro/login">
+		<div class="signin-head"  ><img src="${base }/resource/controls/login/images/user.png" alt="登录图标" class="img-circle" style="width: 120px;height: 120px;"></div>
+		<form class="form-signin"   role="form" method="post" id = "loginForm" action="shiro/login">
 			<c:if test="${erroInfo!=null }">
 				<div class="erroInfo">${erroInfo}</div>
 			</c:if>
-			<input type="text" class="form-control" value="admin"
-				placeholder="请输入用户名" name="username" data-validate="{required:true}" />
-			<input type="password" class="form-control" value="admin"
-				placeholder="请输入密码" name="password" data-validate="{required:true}" />
-			<button class="btn btn-lg btn-warning btn-block submit-alert-btn"
-				type="button" onclick="submitForm();">登录</button>
-			<label class="checkbox"> <input type="checkbox"
-				value="remember-me"> 记住我 <a style=""
-				href="javascript:void(0);" onclick="toRegisterPage();">注册</a>
+			<input type="text" class="form-control" value="admin" placeholder="请输入用户名" name="username" data-validate="{required:true}"/>
+			<input type="password" class="form-control"  value="admin" placeholder="请输入密码" name="password" data-validate="{required:true}"/>
+			<button class="btn btn-lg btn-warning btn-block submit-alert-btn" type="button" onclick="submitForm();">登录</button>
+			<label class="checkbox">
+				<input type="checkbox" value="remember-me"> 记住我      <a style="margin-left: 80px;" href="javascript:void(0);" onclick="toRegisterPage();">没有用户？现在去注册</a>
 			</label>
 		</form>
 	</div>

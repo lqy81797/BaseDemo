@@ -25,6 +25,7 @@
 
 <!-- js begin -->
 
+
 	<!-- jquery js -->
 	<script src="${base}/resource/Scripts/jquery-1.11.1.min.js" ></script>
 	<!-- bootstrap核心js -->
@@ -55,6 +56,11 @@
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerToolBar.js"></script> <!-- 工具栏 -->
 	<script src="${base}/resource/controls/ligerUI/js/plugins/ligerFilter.js"></script> <!-- 过滤 -->
 	<script src="${base}/resource/controls/ligerUI/js/ligerui.all.js"></script> 
+
+<!-- js校验 -->
+	<script src="${base}/resource/controls/validateForm/js/jquery.validate.js"></script>
+	<script src="${base}/resource/controls/validateForm/js/additional-methods.js"></script>
+	<script src="${base}/resource/controls/validateForm/js/messages_cn.js" type="text/javascript"></script>
 
 	<!-- IE 兼容性支持 JAVASCRIPT 开始 -->
 	<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->

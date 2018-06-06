@@ -36,12 +36,12 @@ public class ApproveController extends BaseController {
 	
 	@RequestMapping("/goApply")
 	public String goApply() {
-		return "approve/apply";
+		return "student/approveForStudent";
 	}
 	
 	@RequestMapping("/goTodo")
 	public String goTodo() {
-		return "approve/todo";
+		return "teacher/approveForTeacher";
 	}
 	
 	@RequestMapping("/goAddApply")
@@ -59,7 +59,7 @@ public class ApproveController extends BaseController {
 		int status = 0;
 		Approve approve = approveService.addApprove(subject, remark, userId, status);
 		map.put("approve", approve);
-		return "approve/apply";
+		return "student/addApprovement";
 	}
 	
 	@RequestMapping("/todo")

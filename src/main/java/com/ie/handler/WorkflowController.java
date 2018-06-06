@@ -38,7 +38,7 @@ public class WorkflowController extends BaseController {
 		String userName = user.getUserName();
 		String taskId = workflowService.startProcess(userName, id);
 		workflowService.saveSubmitTask(taskId);
-		return "approve/apply";
+		return "student/approveForStudent";
 	}
 
 	//提交任务
@@ -47,6 +47,6 @@ public class WorkflowController extends BaseController {
 		String taskId = workflowService.getTaskId(id);
 		workflowService.saveSubmitTask(taskId);
 		workflowService.setApprove(id);
-		return "approve/list";
+		return "teacher/approveForTeacher";
 	}
 }

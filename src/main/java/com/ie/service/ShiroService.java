@@ -31,8 +31,13 @@ public class ShiroService {
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午9:43:21
 	 */
+<<<<<<< HEAD
 	public User find(String username, String password) {
 		User user = userDao.getByUserNameAndPassword(username, password);
+=======
+	public User find(String userName) {
+		User user = userDao.getByUserName(userName);
+>>>>>>> branch 'origin' of https://github.com/lqy81797/BaseDemo.git
 		if (user != null) {
 			return user;
 		} else {

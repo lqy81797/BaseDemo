@@ -93,17 +93,16 @@ iframe {
 		<div class="row-fluid ">
 			<div class="col-ls-12 column">
 				<nav class="navbar navbar-default " role="navigation">
+				<div class="container-fluid">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
 					<a class="navbar-brand" href="#">考试之星系统</a>
 				</div>
-				<div>
-					<p class="navbar-text pull-right">您好：${sessionScope.sessionUser.name}</p>
+				<div> 
+				<ul class="nav navbar-nav navbar-right"> 
+					<li><p class="navbar-brand">您好：${sessionScope.sessionUser.name}</p></li>
+					<li> <button type="button" class="btn btn-link navbar-btn" style="color:yellow"> 注销</button></li>
+				</ul>
+				</div>
 				</div>
 				</nav>
 

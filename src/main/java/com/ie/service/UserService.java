@@ -78,6 +78,7 @@ public class UserService {
 	public void save(String userId, String password, String name, String phone, String email) {
 		User user = new User();
 		user.setUserName(userId);
+<<<<<<< HEAD
 		user.setPassword(MD5(password, userId));
 		user.setRoleId(3);
 		user.setName(name);
@@ -94,5 +95,13 @@ public class UserService {
 		
 		Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
 		return result.toString();
+=======
+		user.setPassword(Encrypt.e(password));
+		user.setRoleId(3);
+		user.setName(name);
+		user.setPhone(phone);
+		user.setEmail(email);
+		userDao.save(user);
+>>>>>>> branch 'origin' of https://github.com/lqy81797/BaseDemo.git
 	}
 }

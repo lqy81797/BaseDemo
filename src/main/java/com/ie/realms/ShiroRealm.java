@@ -9,11 +9,23 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthenticatingRealm;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
+=======
+
+import com.ie.entities.User;
+import com.ie.service.ShiroService;
+>>>>>>> branch 'origin' of https://github.com/lqy81797/BaseDemo.git
 
 import com.ie.entities.User;
 import com.ie.service.ShiroService;
 
+<<<<<<< HEAD
 public class ShiroRealm extends AuthenticatingRealm{
+=======
+public class ShiroRealm extends AuthorizingRealm {
+	@Autowired
+	ShiroService shiroService;
+>>>>>>> branch 'origin' of https://github.com/lqy81797/BaseDemo.git
 
 	@Autowired
 	ShiroService shiroService;
@@ -26,7 +38,11 @@ public class ShiroRealm extends AuthenticatingRealm{
 
 		User user = shiroService.getUserByUserName(username);
 
+<<<<<<< HEAD
 		Object principal = username;
+=======
+		Object principal = user;
+>>>>>>> branch 'origin' of https://github.com/lqy81797/BaseDemo.git
 
 		String password = user.getPassword();
 

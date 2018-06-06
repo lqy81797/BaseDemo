@@ -38,7 +38,7 @@ public class WorkflowService {
 		variables.put("objId", objId);
 		ProcessInstance instance = processEngine.getRuntimeService().startProcessInstanceByKey(key, objId, variables);
 		Task task = processEngine.getTaskService().createTaskQuery()
-				.processInstanceId(instance.getProcessDefinitionId())
+				.processInstanceId(instance.getProcessInstanceId())
 				.singleResult();
 		return task.getId();
 	}

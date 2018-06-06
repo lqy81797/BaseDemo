@@ -74,7 +74,7 @@ public class WorkflowService {
 	 */
 	public void setApprove(String id , int status) {
 		Approve approve = approveDao.findOne(Integer.valueOf(id));
-		approve.setStatus(1);
+		approve.setStatus(status);
 		approveDao.save(approve);
 	}
 

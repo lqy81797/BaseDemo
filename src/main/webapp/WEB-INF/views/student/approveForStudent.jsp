@@ -110,7 +110,9 @@
 			$("#pageloading").hide();
 
 		});
-		
+		function jump(rowid){
+			window.location.href = "${base}/WorkflowController/startProcess.do?id="+ rowid;
+		}
 		
 		
 		function itemclick(item) {

@@ -64,9 +64,9 @@ public class ApproveController extends BaseController {
 	
 	@RequestMapping("/todo")
 	@ResponseBody
-	public String todo() {
+	public String todo(Page page) {
 		List<Approve> approveList = approveService.listAllTodo();
-		return this.getJsonStr(approveList);
+		return this.getJsonStr(page, approveList);
 	}
 	
 	@RequestMapping("/approving")

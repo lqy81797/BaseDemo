@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,10 @@ public class WorkflowService {
 		variables.put("inputUser", userName);
 		String objId = key + "." + id;
 		variables.put("objId", objId);
-		processEngine.getRuntimeService().startProcessInstanceByKey(key, objId, variables);
+		ProcessInstance instance = processEngine.getRuntimeService().startProcessInstanceByKey(key, objId, variables);
 		Task task = processEngine.getTaskService().createTaskQuery()
-				.processVariableValueEquals("objId", objId)
-				.processVariableValueEquals("inputUser", userName)
+				.processInstanceId(instance.getProcessDefinitionId())
+				.taskAssignee("zhangsan")
 				.singleResult();
 		return task.getId();
 	}

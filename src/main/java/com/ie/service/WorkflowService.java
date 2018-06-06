@@ -62,7 +62,7 @@ public class WorkflowService {
 		String objId = key + "." + id;
 		Task task = processEngine.getTaskService().createTaskQuery()
 				.processVariableValueEquals("objId", objId)
-				.taskAssignee("teacher")
+				.taskAssignee("lisi")
 				.singleResult();
 		return task.getId();
 	}

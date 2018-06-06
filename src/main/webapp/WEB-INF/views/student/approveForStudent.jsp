@@ -80,7 +80,8 @@
 											align : 'left',
 											render: function (item)
 							                 {
-							                        if (parseInt(item.status) == 0) return '未通过';		
+							                        if (parseInt(item.status) == 0) return '未申请';
+							                        else if (parseInt(item.status) == -1) return '待审批';
 							                        return '已通过';
 							                  }
 										},
@@ -88,15 +89,10 @@
 											display : '操作',
 											isAllowHide : false,
 											render : function(row) {
-												if (row.errormsg != null) {
-													return row.errormsg;
-												} else {
 													return "<a href='javascript:jump(&quot;"
-															+ row.baseID
+															+ row.id
 															+ "&quot;)'>申请</a>"
 												}
-
-											}
 										} ],
 								url:"${base}/ApproveController/approving",
 								usePager : true,
@@ -111,6 +107,7 @@
 
 		});
 		function jump(rowid){
+			alert(rowid);
 			window.location.href = "${base}/WorkflowController/startProcess.do?id="+ rowid;
 		}
 		
@@ -132,7 +129,7 @@
 			}
 		}
 		function f_open()
-	    { $.ligerDialog.open({ url:'${base}/ApproveController/goAddApply.do', width: 800, height: 600, modal: false, isResize: true });
+	    { $.ligerDialog.open({ url:'${base}/ApproveController/goAddApply.do', width:400, height: 300, modal: false, isResize: true });
 	    }
 		//$("#approve").click
 	</script>

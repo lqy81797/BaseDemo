@@ -86,7 +86,7 @@ iframe {
 				<div> 
 				<ul class="nav navbar-nav navbar-right"> 
 					<li><p class="navbar-brand">您好：${sessionScope.sessionUser.name}</p></li>
-					<li> <button type="button" class="btn btn-link navbar-btn" style="color:yellow"> 注销</button></li>
+					<li> <button type="button" class="btn btn-link navbar-btn" style="color:yellow" onclick="logout()"> 注销</button></li>
 				</ul>
 				</div>
 				</div>
@@ -118,6 +118,21 @@ iframe {
     }
     $(function(){ window.onresize=function(){
             changeFrameHeight(); }}); 
+    
+    
+    function logout(){
+    	$.ajax({
+    		url:"shiro/logout",
+    		type:"post",
+    		success:function(data){
+				alert("退出登录");
+				window.location.reload();
+      	},
+			error:function(e){
+				alert("错误！！");	
+			}
+		});
+    	}
 	</script>
 </body>
 </html>

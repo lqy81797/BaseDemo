@@ -11,9 +11,10 @@
 <body>
 	<div class="container-fluid">
 	<div class="row-fluid">
-	<div class="col-sm-5 col-md-5 col-xs-5 col-md-offset-4" style="margin-top: 1cm;">
+	<div class="col-md-12" style="margin-top: 1cm;">
 	<form class="bs-example bs-example-form" role="form" id="testForm">
 	<h3>请选择您要申请的考试：</h3>
+	<br>
 	<div class="form-group">
             <span >科目:</span>
             <select id="subject" name="subject" class="form-control">
@@ -21,13 +22,11 @@
             </select>
     </div>
     <div class="form-group">
-            <span class="input-group-addon">备注:</span>
+            <span >备注:</span>
             <input type="text" class="form-control" name="remark" id="fullname" />
     </div>
-    <div class="form-group">
-    <input type="button" name="cancel" class="btn" value="取消"/>
-	<input type="button" id="confrim" name="dosubmit" class="btn btn-primary" onclick="upload()" value="确定"/>
-	</div> 
+  
+	<input type="button" id="confrim" name="dosubmit" class="btn btn-primary col-md-offset-6 " onclick="upload()" value="确定"/> 
 	</form>
 	</div>
 	</div>
@@ -44,14 +43,21 @@
           	processData: false,
           	contentType: false,
           	success:function(data){
-					console.log(data);
 					alert("成功添加");
-					location.reload(true);
-				},
+					window.parent.demoGrid.reload();
+					parent.$.ligerDialog.close();
+					parent.$(".l-dialog,.l-window-mask").remove(); 
+					
+          	},
 				error:function(e){
 					alert("错误！！");	
+					parent.$.ligerDialog.close();
+					parent.$(".l-dialog,.l-window-mask").remove(); 
 				}
 			});
+	}
+	function close(){
+		window.close();
 	}
 	
 	</script>

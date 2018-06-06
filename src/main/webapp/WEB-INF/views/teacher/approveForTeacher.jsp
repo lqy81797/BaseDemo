@@ -58,7 +58,7 @@
 			</div>
 		<div class="user-item pull-right">
 			<button type="button">取消</button>
-			<button type="button">确定</button>
+			<button type="button" onclick="approve()">确定</button>
 		</div>
 
 	</div>
@@ -86,36 +86,46 @@
 					.ligerGrid(
 							{
 								title : '审批列表',
-								checkbox : true,
 								columns : [
 										{
-											display : '用户名',
-											name : 'company',
+											display : '申请人',
+											name : 'userId',
 											width : 250,
 											align : 'left'
 										},
 										{
-											display : '证件编号',
-											name : 'cardNo',
+											display : '科目',
+											name : 'subject',
 											width : 250,
 											align : 'left'
 										},
-
+										{
+											display : '备注',
+											name : 'remark',
+											width : 250,
+											align : 'left'
+										},
+										{
+											display : '状态',
+											name : 'status',
+											align : 'left',
+											render: function (item)
+							                 {
+												 if (parseInt(item.status) == 0) return '未申请';
+							                     else if (parseInt(item.status) == -1) return '待审批';
+							                     return '已通过';
+							                  }
+										},
 										{
 											display : '操作',
 											isAllowHide : false,
-											render : function(row) {
-												if (row.errormsg != null) {
-													return row.errormsg;
-												} else {
+											render : function(rowdata, rowindex, value) {
 													return "<a href='javascript:jump(&quot;"
-															+ row.baseID
-															+ "&quot;)'>查看</a>"
-												}
-
+															+ rowdata.id
+															+ "&quot;)'>审批</a>"
 											}
 										} ],
-								url : '${base}/externalData/ReportMirrorController/ReportMirrorList.do?hid=${hid}',
+								url : '${base}/ApproveController/todo.do',
 								usePager : true,
 								rownumbers : true,
 								pageSize : 20,
@@ -147,8 +157,17 @@
 		function f_open()
 	    { 
         $.ligerDialog.open({ target: $("#target1") });
-
 	    }
+		var confirm = "";
+		function jump(rowid){
+			  $.ligerDialog.open({ target: $("#target1") });
+			  confirm = rowid;
+			  alert(confirm);
+		}
+		function approve(){
+			alert(confirm);
+			window.location.href = "${base}/WorkflowController/submit.do?id="+ confirm;
+		}
 		//$("#approve").click
 	</script>
 </body>

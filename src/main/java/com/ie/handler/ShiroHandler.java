@@ -40,7 +40,11 @@ public class ShiroHandler {
 			@RequestParam("password") String password, HttpServletRequest request, 
 			Map<String,Object> map){
 		Subject currentUser = SecurityUtils.getSubject();
-		
+//		User u = shiroService.find(username);
+//		if(u==null) {
+//			map.put("erroInfo", "用户不存在！");
+//			return "redirect:/login.jsp";
+//		} else
 		if (!currentUser.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             token.setRememberMe(true);
@@ -85,5 +89,13 @@ public class ShiroHandler {
             }
         }
 		return "redirect:/list.jsp";
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		if (session != null) {
+			session.invalidate();
+		}
+		return "redirect:/login.jsp";
 	}
 }

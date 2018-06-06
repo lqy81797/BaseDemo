@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ie.entities.User;
 import com.ie.repository.UserRepository;
+import com.ie.util.Encrypt;
 
 /**
  * @author lvqingyang
@@ -65,5 +66,21 @@ public class UserService {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月5日 下午9:56:58
+	 */
+	public void save(String userId, String password, String name, String phone, String email) {
+		User user = new User();
+		user.setUserName(userId);
+		user.setPassword(Encrypt.e(password));
+		user.setRoleId(3);
+		user.setName(name);
+		user.setPhone(phone);
+		user.setEmail(email);
+		userDao.save(user);
 	}
 }

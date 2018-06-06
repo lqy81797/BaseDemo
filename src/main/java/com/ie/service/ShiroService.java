@@ -25,4 +25,18 @@ public class ShiroService {
 	public User getUserByUserName(String userId) {
 		return userDao.getByUserName(userId);
 	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月5日 下午9:43:21
+	 */
+	public User find(String userName) {
+		User user = userDao.getByUserName(userName);
+		if (user != null) {
+			return user;
+		} else {
+			return null;
+		}
+	}
 }

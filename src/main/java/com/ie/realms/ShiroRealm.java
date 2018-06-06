@@ -6,9 +6,7 @@ import java.util.Set;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -16,35 +14,34 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.ie.entities.User;
+import com.ie.service.ShiroService;
 
 
 public class ShiroRealm extends AuthorizingRealm {
+	@Autowired
+	ShiroService shiroService;
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 
 		UsernamePasswordToken upToken = (UsernamePasswordToken) token;
-		System.out.println("First." + upToken.hashCode());
 
 		String username = upToken.getUsername();
 
-		System.out.println("�����ݿ��л�ȡ username: " + username + " ����Ӧ���û���Ϣ.");
+		User user = shiroService.getUserByUserName(username);
 
-		if ("unknown".equals(username)) {
-			throw new UnknownAccountException("�û�������!");
-		}
+		Object principal = user;
 
-		if ("monster".equals(username)) {
-			throw new LockedAccountException("�û�������");
-		}
-
-		Object principal = username;
+		String password = user.getPassword();
 
 		Object credentials = null; // "fc1709d0a95a6be30bc5926fdb7f22f4";
 		if ("admin".equals(username)) {
 			credentials = "df655ad8d3229f3269fad2a8bab59b6c";
-		} else if ("user".equals(username)) {
-			credentials = "098d2c478e9c11555ce2823231e02ec1";
+		} else {
+			credentials = password;
 		}
 
 		String realmName = getName();

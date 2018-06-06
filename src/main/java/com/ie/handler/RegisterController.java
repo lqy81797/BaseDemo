@@ -2,22 +2,20 @@ package com.ie.handler;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.ie.service.UserService;
 
 @Controller
 @RequestMapping(value="/RegisterController")
 public class RegisterController {
 	
+	@Autowired
+	UserService userService;
 	/**
 	 * 进入注册页面
 	 */
@@ -29,9 +27,15 @@ public class RegisterController {
 	/**
 	 * 注册用户
 	 */
+	@Transactional
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String save(){
-		
+	public String save(HttpServletRequest request){
+		String userId = request.getParameter("loginID");
+		String password = request.getParameter("password");
+		String name = request.getParameter("realName");
+		String phone = request.getParameter("mobilePhone");
+		String email = request.getParameter("email");
+		userService.save(userId, password, name, phone, email);
 		return "redirect:/login.jsp";
 	}
 	

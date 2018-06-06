@@ -77,7 +77,7 @@ body {
 </style>
 <script type="text/javascript">
 	function toRegisterPage() {
-		window.location.href = "${base}/RegisterController/register.do"
+		window.location.href = "${base}/RegisterController/register.do";
 	}
 	function submitForm() {
 		$("#loginForm").submit();

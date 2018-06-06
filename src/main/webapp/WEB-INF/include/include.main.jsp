@@ -16,6 +16,8 @@
 	<!-- ligerUI css -->
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/Aqua/css/ligerui-all.css" />
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/ligerui-icons.css" />
+	
+	<link rel="stylesheet"  href="${base}/resource/controls/validateForm/css/style.css" />
 	<!-- IE 兼容性支持 CSS 开始 -->
 	<!--[if lte IE 8]>
 	   <link rel="stylesheet" href="${base}/resource/ie.css"  />

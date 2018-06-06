@@ -78,7 +78,7 @@
 					<div class="form-group form-group-margin-bottom-2">
 						<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label iss-label-no-weight">真实姓名<span class="red-sign">&nbsp;*</span>：</label>
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"> 
-							<input id="realName" name="realName" value="" class="form-control input-sm width-100 required isMobile" placeholder='请输入您的真实姓名' >
+							<input id="realName" name="realName" value="" class="form-control input-sm width-100 required" placeholder='请输入您的真实姓名' >
 						</div>						
 					</div>
 					
@@ -142,14 +142,6 @@
 							<input id="entcNameEn" name="entcNameEn" value="" class="form-control input-sm width-80 " placeholder='请输入您的家庭住址(英文)'  >
 						</div>
 					</div> --%>
-					
-				
-					<div class="form-group form-group-margin-bottom-2">
-						<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label iss-label-no-weight">备注：</label>
-						<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 form-inline"> 
-							<textarea  name="note"  class="form-control font-12 width-100" placeholder='您的备注信息填写在此处' ></textarea>
-						</div>
-					</div>
 					
 					<div class="text-center" >
 							<button type="reset" class="btn btn-default btn-sm"  id="reset_btn">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;

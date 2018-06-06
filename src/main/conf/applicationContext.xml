@@ -115,7 +115,6 @@
 		<property name="realms">
 			<list>
 				<ref bean="jdbcRealm" />
-				<ref bean="secondRealm" />
 			</list>
 		</property>
 		<!-- 设置记住我的时间为10秒 -->
@@ -154,16 +153,6 @@
 			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
 				<!-- 加密算法 -->
 				<property name="hashAlgorithmName" value="MD5"></property>
-				<!-- 加密次数 -->
-				<property name="hashIterations" value="1024"></property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="secondRealm" class="com.ie.realms.SecondRealm">
-		<property name="credentialsMatcher">
-			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-				<!-- 加密算法 -->
-				<property name="hashAlgorithmName" value="SHA1"></property>
 				<!-- 加密次数 -->
 				<property name="hashIterations" value="1024"></property>
 			</bean>

@@ -16,4 +16,11 @@ import com.ie.entities.User;
 public interface UserRepository extends JpaRepository<User, String>, JpaSpecificationExecutor<User>{
 	//通过userId获取user对象
 	public User getByUserName(String userName);
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月5日 下午9:47:21
+	 */
+	public User getByUserNameAndPassword(String username, String password);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ie.entities.Approve;
+import com.ie.entities.ItemBank;
 import com.ie.entities.User;
 import com.ie.service.ApproveService;
 import com.ie.service.ItemBankService;
@@ -40,6 +41,11 @@ public class ApproveController extends BaseController {
 	@RequestMapping("/goTodo")
 	public String goTodo() {
 		return "approve/todo";
+	}
+	
+	@RequestMapping("/goAddApply")
+	public String goAddApply() {
+		return "student/addApprovement";
 	}
 
 	@Transactional
@@ -67,7 +73,14 @@ public class ApproveController extends BaseController {
 	public String approving(HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
 		List<Approve> approveList = approveService.listAllApproving(user.getUserName());
+		approveList = formatDate(approveList);
 		return this.getJsonStr(approveList);
 	}
 	
+	public List<Approve> formatDate(List<Approve> approve) {
+		for(Approve app : approve) {
+			app.setTime(app.getCreateTime().toString());
+		}
+		return approve;
+	}
 }

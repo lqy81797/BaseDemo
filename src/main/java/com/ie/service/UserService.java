@@ -48,8 +48,6 @@ public class UserService {
 	 * @author: lvqingyang
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午3:13:47
-	 * @param:描述1描述
-	 * @return：返回结果描述
 	 */
 	public boolean update() {
 		// TODO 自动生成的方法存根
@@ -62,8 +60,8 @@ public class UserService {
 	 * @date: 2018年6月5日 下午3:22:22
 	 */
 	public boolean delete(String id) {
-		if (userDao.exists(id)) {
-			userDao.delete(id);
+		if (userDao.exists(Integer.valueOf(id))) {
+			userDao.delete(Integer.valueOf(id));
 			return true;
 		} else {
 			return false;

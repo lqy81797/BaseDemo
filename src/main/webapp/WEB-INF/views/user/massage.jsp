@@ -60,53 +60,44 @@
 
 </head>
 <body>
-
-	<div class="row">
-		<div class="col-sm-5 col-md-5 col-xs-5"></div>
-		<div class="col-sm-5 col-md-5 col-xs-5">
-			<div class="all-middle">
-				<div class="user-item ">
-					<label>用户名</label> <br/> <br/>
-					<div>
-						<input type="text" class="txt" value="${userId}"
-							placeholder="请输15位以内的昵称" name="fullName" />
-					</div>
-				</div>
-
-				<div class="user-item">
-					<label>姓名</label> <br /> <br />
-					<div>
-						<input type="text" class="txt" value="${name}" name="realname" />
-					</div>
-				</div>
-
-				<div class="user-item">
-					<label>手机号</label> <br /> <br />
-					<div>
-						<input type="number" class="txt" value="${phone}" disabled
-							name="phone" />
-					</div>
-				</div>
-
-				<div class="user-item">
-					<label>邮箱</label> <br /> <br />
-					<div>
-						<input type="text" class="txt" value="${email}" disabled
-							name="email" />
-					</div>
-				</div>
-				<div class="user-item">
-					<label>密码</label> <br /> <br />
-					<div>
-						<input type="text" class="txt" value="${password}" disabled
-							name="pass" /> <input type="button" class="btn btn-link"
+	<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-sm-5 col-md-5 col-xs-5 col-md-offset-4" style="margin-top: 1cm;">
+			<!-- <div class="all-middle"> -->
+			<form class="bs-example bs-example-form" role="form">
+			<div class="input-group">
+            <span class="input-group-addon">用户名:</span>
+            <input type="text" class="form-control" value="${userId}"
+							placeholder="请输15位以内的昵称" name="fullName" id="fullname" />
+        	</div>
+        	<br>
+			<div class="input-group">
+            <span class="input-group-addon">姓     名:</span>
+            <input type="text" class="form-control" value="${name}" name="realname" id="realname" />
+        	</div>
+        	<br>	
+			<div class="input-group">
+            <span class="input-group-addon">手机号:</span>
+            <input type="text" class="form-control" value="${phone}" name="phone" id="phone" />
+        	</div>
+        	<br>	
+        	<div class="input-group">
+            <span class="input-group-addon">邮 箱:</span>
+            <input type="text" class="form-control" value="${email}" name="email" id="email" />
+        	</div>	
+        	<br>
+        	<div class="input-group">
+            <span class="input-group-addon">密 码:</span>
+            <input type="password" class="form-control" value="${password}" name="password" id="password" />
+			</div>
+			<input type="button" class="btn btn-link form-control"
 							id="password" data-toggle="modal" data-target="#myModal"
 							value="修改密码" />
-					</div>
-				</div>
-			</div>
+			</form>
+			<!-- </div> -->
 		</div>
 		<div class="col-sm-2 col-md-2 col-xs-2 "></div>
+	</div>
 	</div>
 	<!-- ----------------以下为modal部分 -------------------------------->
 
@@ -140,10 +131,12 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<input type="submit" id="pwd_btn" name="dosubmit"
-								class="pro-btn default" value="确定"> <input type="button"
-								name="close" class="pro-btn close" value="取消"
+						<input type="button"
+								name="close" class="btn" value="取消"
 								data-dismiss="modal" />
+						<input type="submit" id="confrim" name="dosubmit"
+								class="btn btn-primary" value="确定"> 
+								
 						</div>
 					</div>
 					<!-- /.modal-content -->

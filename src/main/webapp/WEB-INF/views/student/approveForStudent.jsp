@@ -14,7 +14,7 @@
 			<div class="col-md-12 column">
 				<ul class="breadcrumb">
 					<li><a href="#">首页</a></li>
-					<li class="active">身体考试</li>
+					<li class="active">申请考试</li>
 				</ul>
 				<!-- <h4>审批列表</h4> -->
 				<!-- <form class="form-inline" role="form">
@@ -62,7 +62,7 @@
 		var demoGrid = null;
 		var toolbarOptions = {
 			items : [ {
-				text : '审批',
+				text : '申请考试',
 				click : itemclick,
 				icon : 'coffee'
 			}, {
@@ -131,7 +131,7 @@
 		
 		function itemclick(item) {
 			switch (item.text) {
-			case "审批":
+			case "申请考试":
 				f_open();
 				break;
 			case "删除":
@@ -146,7 +146,7 @@
 			}
 		}
 		function f_open()
-	    { $.ligerDialog.open({ url:'${base}/views/student/approveForStudent.jsp', width: 800, height: 600, modal: false, isResize: true });
+	    { $.ligerDialog.open({ url:'${base}/ApproveController/goAddApply.do', width: 800, height: 600, modal: false, isResize: true });
 	    }
 		//$("#approve").click
 	</script>

@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h4>UserPath</h4>
+	<h4>欢迎来到考试之星系统，点击右侧菜单</h4>
 </body>
 </html>

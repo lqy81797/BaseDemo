@@ -9,7 +9,7 @@
 <head>
 <%-- <script src="${base}/resource/controls/iframe-resizer/iframeResizer.min.js" ></script> --%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>考试之星系统</title>
 <link rel="stylesheet"
 	href="${base}/resource/controls/navbarCss/navbarCss.css"
 	type="text/css" />
@@ -53,17 +53,7 @@ iframe {
 					isExpand : 3,
 					onSelect : nodeClick
 				});
-				/* if (tree != null && typeof (selectedNode) == "undefined" && !selectedNode) {
-					if(isShowYh==1){//系统管理员登录，默认显示用户管理列表
-						$("#frmDemo").attr("src", "${base}/viewChamcUserList/ViewChamcUserListController/viewChamcUserList.do");
-					}else{
-						if(proid!=null && proid!=""){//从项目系统中过来的
-							$("#frmDemo").attr("src", "${base}/asset/assetController/dataCollection.do?strMethod=multiselect&strMenuCode=1602");
-						}else{//本系统登录的
-							$("#frmDemo").attr("src", "${base}/pending/pendingController/pendingList.do");
-						}
-					}
-				} */
+				
 			},
 			error : function() {
 				//提示信息
@@ -77,11 +67,7 @@ iframe {
 		if (node.data.id == "Layout"
 				|| typeof (node.data.children) == "undefined") {
 			selectedNode = node;
-			if (node.data.viewtype == 2) {//展现方式：1 iframe，2 弹出新窗口
-				window.open("${base}/" + node.data.src);
-			} else {
 				$("#frmDemo").attr("src", "${base}/" + node.data.src);
-			}
 		}
 	}
 

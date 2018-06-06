@@ -39,24 +39,7 @@
 					<div id="approveList"></div>
 				</div>
 			</div>
-			
-			<div id="target1" style="width:200px; margin:3px; display:none;">
-    <h3>提示文本标题</h3>
-    <div>
-        这里是目标容器的内容，执行open({target:$("#target1")});<BR />
-        以后将把这段内容以ligerDialog的方式加载并显示。
-        <select id="sl1">
-        <option>选项一</option>
-        <option>选项二</option>
-        <option>选项三</option>
-        <option>选项四</option>
-        </select><br />
-        <input type="text" id="d1" /><br />
-    </div>
- </div>
-			
-		</div>
-	</div>
+
 	<script type="text/javascript">
 		var checkedCustomer = [];
 		var demoGrid = null;
@@ -80,27 +63,27 @@
 					.ligerGrid(
 							{
 								title : '申请考试',
-								checkbox : true,
 								columns : [
 										{
-											display : '考试名称',
-											name : 'company',
-											width : 250,
+											display : '科目',
+											name : 'subject',
 											align : 'left'
 										},
 										{
-											display : '考试时长',
-											name : 'cardNo',
-											width : 250,
+											display : '创建时间',
+											name : 'time',
 											align : 'left'
 										},
 										{
-											display : '截止日期',
-											name : 'cardNo',
-											width : 250,
-											align : 'left'
+											display : '状态',
+											name : 'status',
+											align : 'left',
+											render: function (item)
+							                 {
+							                        if (parseInt(item.status) == 0) return '未通过';		
+							                        return '已通过';
+							                  }
 										},
-
 										{
 											display : '操作',
 											isAllowHide : false,
@@ -115,6 +98,7 @@
 
 											}
 										} ],
+								url:"${base}/ApproveController/approving",
 								usePager : true,
 								rownumbers : true,
 								pageSize : 20,

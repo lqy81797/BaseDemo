@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ie.entities.Approve;
+import com.ie.entities.User;
 import com.ie.repository.ApproveRepository;
 
 /**
@@ -55,6 +56,15 @@ public class ApproveService {
 	 */
 	public List<Approve> listAllApproving(String userName) {
 		return approveDao.findByUserId(userName);
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月6日 下午9:07:13
+	 */
+	public List<Approve> getReadyList(User user) {
+		return approveDao.getReadyList(user.getUserName());
 	}
 
 }

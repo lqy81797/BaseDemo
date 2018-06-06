@@ -72,8 +72,8 @@ public class WorkflowService {
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月4日 下午9:06:29
 	 */
-	public void setApprove(String id) {
-		Approve approve = approveDao.findOne(id);
+	public void setApprove(String id , int status) {
+		Approve approve = approveDao.findOne(Integer.valueOf(id));
 		approve.setStatus(1);
 		approveDao.save(approve);
 	}

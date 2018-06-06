@@ -21,6 +21,7 @@ import com.ie.service.ApproveService;
 import com.ie.service.ItemBankService;
 import com.ie.util.BaseController;
 import com.ie.util.DemoUtil;
+import com.ie.util.Page;
 
 /**
  * @author lvqingyang
@@ -70,11 +71,11 @@ public class ApproveController extends BaseController {
 	
 	@RequestMapping("/approving")
 	@ResponseBody
-	public String approving(HttpServletRequest request) {
+	public String approving(Page page, HttpServletRequest request) {
 		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
 		List<Approve> approveList = approveService.listAllApproving(user.getUserName());
 		approveList = formatDate(approveList);
-		return this.getJsonStr(approveList);
+		return this.getJsonStr(page, approveList);
 	}
 	
 	public List<Approve> formatDate(List<Approve> approve) {

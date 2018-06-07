@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 题库实体类
  * @date: 2018年5月25日 上午11:28:34 
  */

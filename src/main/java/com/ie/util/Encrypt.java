@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月5日 下午10:01:26 
  */

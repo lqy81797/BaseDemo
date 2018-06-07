@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import com.ie.entities.User;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 用户数据库操作
  * @date: 2018年5月26日 下午12:02:47 
  */
@@ -18,7 +18,7 @@ public interface UserRepository extends JpaRepository<User, Integer>, JpaSpecifi
 	public User getByUserName(String userName);
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午9:47:21
 	 */

@@ -15,7 +15,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 角色实体类
  * @date: 2018年5月25日 下午1:02:05 
  */

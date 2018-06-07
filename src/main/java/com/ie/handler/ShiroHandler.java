@@ -20,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ie.entities.User;
 import com.ie.service.ShiroService;
+import com.ie.util.BaseController;
 import com.ie.util.DemoUtil;
 @Controller
 @RequestMapping("/shiro")
-public class ShiroHandler {
+public class ShiroHandler extends BaseController {
 	
 	@Autowired
 	private ShiroService shiroService;
@@ -49,11 +50,10 @@ public class ShiroHandler {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             token.setRememberMe(true);
             try {
-            	System.out.println("1. " + token.hashCode());
                 currentUser.login(token);
                 User user = shiroService.getUserByUserName(username);
                 SecurityUtils.getSubject().getSession().setAttribute(DemoUtil.SESSION_USER, user);
-                
+                logger.debug("登录成功");
                 String errorString = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);		
         		String msg = "";
         		Class<?> error = null;
@@ -62,7 +62,7 @@ public class ShiroHandler {
         				error = Class.forName(errorString);
         			}
         		} catch (ClassNotFoundException e) {
-        			e.printStackTrace();
+        			logger.error(e.getMessage());
         		}
         		if (error != null) {
         			if (error.equals(UnknownAccountException.class)){
@@ -74,7 +74,6 @@ public class ShiroHandler {
         			} else {
         				msg = "登录失败，其他错误！";
         			}
-        			System.out.println(msg);
         		}
         		if(msg!=null && !"".equals(msg)){
         			//提示信息
@@ -84,8 +83,8 @@ public class ShiroHandler {
         			return "redirect:/list.jsp";
         		}
             } 
-            catch (AuthenticationException ae) {
-            	System.out.println(ae.getMessage());
+            catch (Exception ae) {
+            	logger.error(ae.getMessage());
             	return "redirect:/login.jsp";
             }
         }
@@ -96,7 +95,8 @@ public class ShiroHandler {
 	public String logout(HttpSession session) {
 		if (session != null) {
 			session.invalidate();
+			logger.debug("注销成功");
 		}
-		return "redirect:/login.jsp";
+		return null;
 	}
 }

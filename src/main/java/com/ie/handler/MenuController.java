@@ -23,7 +23,7 @@ import com.ie.util.BaseController;
 import com.ie.util.DemoUtil;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 菜单Controller
  * @date: 2018年5月27日 下午5:36:27 
  */
@@ -33,7 +33,7 @@ public class MenuController extends BaseController {
 	@Autowired
 	private MenuService menuService;
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 菜单集合转换json
 	 * @date: 2018年5月26日 下午4:01:39
 	 * @param:描述1描述
@@ -42,52 +42,63 @@ public class MenuController extends BaseController {
 	@RequestMapping(value="/getMenuJson",method=RequestMethod.GET)
 	@ResponseBody
 	public String getMenuJson(HttpServletRequest request, Menu menu){
-		int param1 = 0, param2 = 0, param3 = 0;
-		HttpSession session = request.getSession();
-		//获取登录用户的角色role
-		User user = (User) session.getAttribute(DemoUtil.SESSION_USER);
-		Role role = menuService.getById(user.getRoleId());
-		if(role.getId() == DemoUtil.SYS_ROLE_ADMIN){ 
-			param1 = 12;
-			param2 = 1;
-			param3 = 123;
-		}else if(role.getId() == DemoUtil.SYS_ROLE_TEACHER){
-			param1 = 12;
-			param2 = 2;
-			param3 = 123;
-		}else if(role.getId() == DemoUtil.SYS_ROLE_STUDENT){
-			param1 = 123;
-			param2 = 3;
-			param3 = 23;
+		try {
+			int param1 = 0, param2 = 0, param3 = 0;
+			HttpSession session = request.getSession();
+			//获取登录用户的角色role
+			User user = (User) session.getAttribute(DemoUtil.SESSION_USER);
+			Role role = menuService.getById(user.getRoleId());
+			if(role.getId() == DemoUtil.SYS_ROLE_ADMIN){ 
+				param1 = 12;
+				param2 = 1;
+				param3 = 123;
+			}else if(role.getId() == DemoUtil.SYS_ROLE_TEACHER){
+				param1 = 12;
+				param2 = 2;
+				param3 = 123;
+			}else if(role.getId() == DemoUtil.SYS_ROLE_STUDENT){
+				param1 = 123;
+				param2 = 3;
+				param3 = 23;
+			}
+			//查询全部菜单数据
+			List<Menu> menuList = menuService.listAllMenu(param1, param2, param3);
+			//将查询的菜单数据转换成ligertree展示的数据
+			List<MenuData> menuDataList = null; 
+			if(menuList!=null && menuList.size()>0){
+				menuDataList = convertMenuList(menuList);
+			}
+			//将菜单展示集合转换成json
+			logger.debug("生成菜单树");
+			return getJsonStr(menuDataList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
 		}
-		//查询全部菜单数据
-		List<Menu> menuList = menuService.listAllMenu(param1, param2, param3);
-		//将查询的菜单数据转换成ligertree展示的数据
-		List<MenuData> menuDataList = null; 
-		if(menuList!=null && menuList.size()>0){
-			menuDataList = convertMenuList(menuList);
-		}
-		//将菜单展示集合转换成json
-		return getJsonStr(menuDataList);
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 将查询的菜单数据转换成ligertree展示的数据
 	 * @date: 2018年5月26日 下午5:46:05
 	 */
 	private List<MenuData> convertMenuList(List<Menu> menuList) {
-		List<MenuData> menuDataList = new ArrayList<MenuData>();
-		for(Menu menu : menuList){
-			MenuData menuData = new MenuData();
-			menuData.setId(menu.getId());
-			menuData.setPid(menu.getParentId());
-			menuData.setText(menu.getName());
-			menuData.setSrc(menu.getUrl());
-			menuData.setViewtype(menu.getViewtype());
-			menuDataList.add(menuData);
+		try {
+			List<MenuData> menuDataList = new ArrayList<MenuData>();
+			for(Menu menu : menuList){
+				MenuData menuData = new MenuData();
+				menuData.setId(menu.getId());
+				menuData.setPid(menu.getParentId());
+				menuData.setText(menu.getName());
+				menuData.setSrc(menu.getUrl());
+				menuData.setViewtype(menu.getViewtype());
+				menuDataList.add(menuData);
+			}
+			return menuDataList;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
 		}
-		return menuDataList;
 	}
 
 	//对应ligertree展示菜单数据的内部类

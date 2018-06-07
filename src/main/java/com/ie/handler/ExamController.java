@@ -21,7 +21,7 @@ import com.ie.util.DemoUtil;
 import com.ie.util.Page;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月5日 下午2:51:27 
  */
@@ -34,32 +34,50 @@ public class ExamController extends BaseController {
 
 	@RequestMapping("/goReady")
 	public String goReady() {
+		logger.debug("进入准备考试页面");
 		return "systemTest/ready";
 	}
 
 	@RequestMapping("/ready")
 	@ResponseBody
 	public String ready(HttpServletRequest request, Page page){
-		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
-		List<Approve> approveList = approveService.getReadyList(user);
-		return this.getJsonStr(page, approveList);
+		try{
+			User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+			List<Approve> approveList = approveService.getReadyList(user);
+			logger.debug("生成我的考试列表");
+			return this.getJsonStr(page, approveList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 
 	@RequestMapping("/goTest")
 	public String goTest(Map<String,Object> map) {
-		Date date = new Date();
-		Calendar cal = Calendar.getInstance();   
-		cal.setTime(date);   
-		cal.add(Calendar.HOUR, 1); 
-		date = cal.getTime();
-		map.put("deadLine", date.toString());
+		try{
+			Date date = new Date();
+			Calendar cal = Calendar.getInstance();   
+			cal.setTime(date);   
+			cal.add(Calendar.HOUR, 1); 
+			date = cal.getTime();
+			map.put("deadLine", date.toString());
+			logger.debug("进入考试页面");
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 		return "systemTest/exam";
 	}
 
 	@RequestMapping("/test")
 	@ResponseBody
 	public String test(HttpServletRequest request){
-		List<ItemBank> itemBankList = approveService.getTestItems();
-		return this.getJsonStr(itemBankList);
+		try{
+			List<ItemBank> itemBankList = approveService.getTestItems();
+			logger.debug("生成试卷");
+			return this.getJsonStr(itemBankList);
+		}catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 }

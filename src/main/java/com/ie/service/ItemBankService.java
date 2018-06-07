@@ -19,7 +19,7 @@ import com.ie.entities.User;
 import com.ie.repository.ItemBankRepository;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年5月28日 下午6:08:55 
  */
@@ -29,11 +29,11 @@ public class ItemBankService {
 	private ItemBankRepository itemBankDao;
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 向数据库添加新题目
 	 * @date: 2018年5月28日 下午6:54:44
 	 */
-	public void addItem(String[] item, User createUser, Date createDate) {
+	public void addItem(String[] item, User createUser, Date createDate) throws Exception {
 		ItemBank itemBank = new ItemBank();
 		itemBank.setQuestion(item[0]);
 		itemBank.setOptionA(item[1]);
@@ -47,11 +47,11 @@ public class ItemBankService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 生成excel模板
 	 * @date: 2018年5月30日 上午10:09:32
 	 */
-	public XSSFWorkbook getExcel() {
+	public XSSFWorkbook getExcel() throws Exception {
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		XSSFSheet sheet = workbook.createSheet();
 		XSSFRow row = sheet.createRow(0);
@@ -71,11 +71,11 @@ public class ItemBankService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 读取excel数据并插入题库
 	 * @date: 2018年5月30日 下午7:20:13
 	 */
-	public boolean loadExcelDataAndSave(Workbook workbook, User createUser, Date createDate) {
+	public boolean loadExcelDataAndSave(Workbook workbook, User createUser, Date createDate) throws Exception {
 		try{
 			for (int numSheet = 0; numSheet < workbook.getNumberOfSheets(); numSheet++) {
 				Sheet sheet = workbook.getSheetAt(numSheet);
@@ -112,23 +112,23 @@ public class ItemBankService {
 	}
 	
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 列出题库中全部记录
 	 * @date: 2018年5月30日 下午7:25:34
 	 */
-	public List<ItemBank> listAllItems() {
+	public List<ItemBank> listAllItems() throws Exception {
 		return itemBankDao.findAll();
 	}
 	
-	public List<ItemBank> searchItem(String str) {
+	public List<ItemBank> searchItem(String str) throws Exception {
 		return itemBankDao.searchItem("%" + str + "%");
 	}
 	
-	public ItemBank findItemById(String id) {
+	public ItemBank findItemById(String id) throws Exception {
 		return itemBankDao.findOne(Integer.valueOf(id));
 	}
 	
-	public boolean update(String id, String[] item, User createUser, Date createDate) {
+	public boolean update(String id, String[] item, User createUser, Date createDate) throws Exception {
 			ItemBank itemBank = new ItemBank();
 			itemBank.setId(Integer.valueOf(id));
 			itemBank.setQuestion(item[0]);
@@ -143,7 +143,7 @@ public class ItemBankService {
 			return true;
 	}
 	
-	public boolean delete(String id) {
+	public boolean delete(String id) throws Exception {
 			itemBankDao.delete(Integer.valueOf(id));
 			return true;
 	}

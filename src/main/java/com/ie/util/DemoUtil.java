@@ -4,7 +4,7 @@
 package com.ie.util;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 公共类
  * @date: 2018年5月26日 下午1:55:40 
  */

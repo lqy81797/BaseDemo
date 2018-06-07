@@ -15,7 +15,7 @@ import com.ie.repository.UserRepository;
 import com.ie.util.Encrypt;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月5日 下午2:52:56 
  */
@@ -26,30 +26,30 @@ public class UserService {
 	UserRepository userDao;
 	
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午2:58:04
 	 */
-	public List<User> listAllUsers() {
+	public List<User> listAllUsers() throws Exception {
 		return userDao.findAll();
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午3:01:18
 	 */
-	public List<User> searchUser(String name) {
+	public List<User> searchUser(String name) throws Exception {
 		return null;
 //		return userDao.searchUser(name);
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午3:22:22
 	 */
-	public boolean delete(String id) {
+	public boolean delete(String id) throws Exception {
 		if (userDao.exists(Integer.valueOf(id))) {
 			userDao.delete(Integer.valueOf(id));
 			return true;
@@ -59,11 +59,11 @@ public class UserService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午9:56:58
 	 */
-	public void save(String userId, String password, String name, String phone, String email) {
+	public void save(String userId, String password, String name, String phone, String email) throws Exception {
 		User user = new User();
 		user.setUserName(userId);
 		user.setPassword(MD5(password, userId));
@@ -74,7 +74,7 @@ public class UserService {
 		userDao.save(user);
 	}
 	
-	public String MD5(String password, String userName) {
+	public String MD5(String password, String userName) throws Exception {
 		String hashAlgorithmName = "MD5";
 		Object credentials = password;
 		Object salt = ByteSource.Util.bytes(userName);
@@ -85,11 +85,11 @@ public class UserService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月7日 下午2:04:31
 	 */
-	public boolean update(String[] userStr) {
+	public boolean update(String[] userStr) throws Exception {
 		User user = new User();
 		user.setId(Integer.valueOf(userStr[0]));
 		user.setName(userStr[1]);

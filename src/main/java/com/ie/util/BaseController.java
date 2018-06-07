@@ -9,13 +9,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年5月30日 下午7:17:01 
  */
 public class BaseController {
+	
+	protected Logger logger = Logger.getLogger(this.getClass());
+	
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 将查询出数据转换成json格式  
 	 * @date: 2018年5月26日 下午3:54:10
 	 */

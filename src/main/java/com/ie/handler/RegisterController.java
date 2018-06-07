@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ie.service.UserService;
+import com.ie.util.BaseController;
 
 @Controller
 @RequestMapping(value="/RegisterController")
-public class RegisterController {
-	
+public class RegisterController extends BaseController {
+
 	@Autowired
 	UserService userService;
 	/**
@@ -23,20 +24,25 @@ public class RegisterController {
 	public String register(){
 		return "redirect:/register.jsp";
 	}
-	
+
 	/**
 	 * 注册用户
 	 */
 	@Transactional
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	public String save(HttpServletRequest request){
-		String userId = request.getParameter("loginID");
-		String password = request.getParameter("password");
-		String name = request.getParameter("realName");
-		String phone = request.getParameter("mobilePhone");
-		String email = request.getParameter("email");
-		userService.save(userId, password, name, phone, email);
+		try {
+			String userId = request.getParameter("loginID");
+			String password = request.getParameter("password");
+			String name = request.getParameter("realName");
+			String phone = request.getParameter("mobilePhone");
+			String email = request.getParameter("email");
+			userService.save(userId, password, name, phone, email);
+			logger.debug("注册用户成功");
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 		return "redirect:/login.jsp";
 	}
-	
+
 }

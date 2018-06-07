@@ -18,7 +18,7 @@ import com.ie.util.BaseController;
 import com.ie.util.Page;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月5日 下午2:51:36 
  */
@@ -28,54 +28,74 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping("/goManage")
 	public String goManage() {
+		logger.debug("进入用户管理页面");
 		return "user/manage";
 	}
-	
+
 	@RequestMapping(value = "/management", method = {RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public String manageUser(Page page) {
-		List<User> userList = userService.listAllUsers();
-		return this.getJsonStr(page, userList);
+		try {
+			List<User> userList = userService.listAllUsers();
+			logger.debug("生成用户列表");
+			return this.getJsonStr(page, userList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
-	
+
 	@RequestMapping("/search")
 	@ResponseBody
 	public String searchUser(@RequestParam(value="name") String name, HttpServletRequest request, Page page){
-		List<User> userList = userService.searchUser(name);
-		return this.getJsonStr(page, userList);
+		try {
+			List<User> userList = userService.searchUser(name);
+			return this.getJsonStr(page, userList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
-	
+
 	@Transactional
 	@RequestMapping("/update")
 	public String updateUser(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		String name = request.getParameter("name");
-		String phone = request.getParameter("phone");
-		String email = request.getParameter("email");
-		String roleId = request.getParameter("roleId");
-		
-		String[] user = {id, name, phone, email, roleId};
-		boolean result = userService.update(user);
-		if(result) {
-			//log
-		} else {
-			//log
+		try{
+			String id = request.getParameter("id");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String email = request.getParameter("email");
+			String roleId = request.getParameter("roleId");
+
+			String[] user = {id, name, phone, email, roleId};
+			boolean result = userService.update(user);
+			if(result) {
+				logger.debug("修改用户成功");
+			} else {
+				logger.debug("修改用户失败");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 		return "user/manage";
 	}
-	
+
 	@Transactional
 	@RequestMapping("/delete")
 	public String deleteUser(HttpServletRequest request) {
-		String id = request.getParameter("id");
-		boolean result = userService.delete(id);
-		if(result) {
-			//log
-		} else {
-			//log
+		try {
+			String id = request.getParameter("id");
+			boolean result = userService.delete(id);
+			if(result) {
+				logger.debug("删除用户成功");
+			} else {
+				logger.debug("删除用户失败");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 		return "user/manage";
 	}

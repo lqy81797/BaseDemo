@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 系统菜单实体
  * @date: 2018年5月26日 下午3:57:40 
  */

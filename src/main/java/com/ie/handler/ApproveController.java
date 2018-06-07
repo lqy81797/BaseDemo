@@ -24,7 +24,7 @@ import com.ie.util.DemoUtil;
 import com.ie.util.Page;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月1日 下午2:17:45 
  */
@@ -33,55 +33,81 @@ import com.ie.util.Page;
 public class ApproveController extends BaseController {
 	@Autowired
 	private ApproveService approveService;
-	
+
 	@RequestMapping("/goApply")
 	public String goApply() {
+		logger.debug("进入申请考试页面");
 		return "student/approveForStudent";
 	}
-	
+
 	@RequestMapping("/goTodo")
 	public String goTodo() {
+		logger.debug("进入考试审批页面");
 		return "teacher/approveForTeacher";
 	}
-	
+
 	@RequestMapping("/goAddApply")
 	public String goAddApply() {
+		logger.debug("进入新增申请页面");
 		return "student/addApprovement";
 	}
 
 	@Transactional
 	@RequestMapping("/add")
 	public String add(HttpServletRequest request, Map<String,Object> map) {
-		String subject = request.getParameter("subject");
-		String remark = request.getParameter("remark");
-		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
-		String userId = user.getUserName();
-		int status = 0;
-		Approve approve = approveService.addApprove(subject, remark, userId, status);
-		map.put("approve", approve);
+		try{
+			String subject = request.getParameter("subject");
+			String remark = request.getParameter("remark");
+			User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+			String userId = user.getUserName();
+			int status = 0;
+			Approve approve = approveService.addApprove(subject, remark, userId, status);
+			logger.debug("新增申请成功");
+			map.put("approve", approve);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
 		return "student/addApprovement";
 	}
-	
+
 	@RequestMapping("/todo")
 	@ResponseBody
 	public String todo(Page page) {
-		List<Approve> approveList = approveService.listAllTodo();
-		return this.getJsonStr(page, approveList);
+		try{
+			List<Approve> approveList = approveService.listAllTodo();
+			logger.debug("生成考试审批列表");
+			return this.getJsonStr(page, approveList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
-	
+
 	@RequestMapping("/approving")
 	@ResponseBody
 	public String approving(Page page, HttpServletRequest request) {
-		User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
-		List<Approve> approveList = approveService.listAllApproving(user.getUserName());
-		approveList = formatDate(approveList);
-		return this.getJsonStr(page, approveList);
-	}
-	
-	public List<Approve> formatDate(List<Approve> approve) {
-		for(Approve app : approve) {
-			app.setTime(app.getCreateTime().toString());
+		try{
+			User user = (User) request.getSession().getAttribute(DemoUtil.SESSION_USER);
+			List<Approve> approveList = approveService.listAllApproving(user.getUserName());
+			approveList = formatDate(approveList);
+			logger.debug("生成我的申请列表");
+			return this.getJsonStr(page, approveList);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
 		}
-		return approve;
+	}
+
+	public List<Approve> formatDate(List<Approve> approve) {
+		try{
+			for(Approve app : approve) {
+				app.setTime(app.getCreateTime().toString());
+			}
+			return approve;
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+
 	}
 }

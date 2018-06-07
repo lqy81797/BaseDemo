@@ -14,7 +14,7 @@ public class DepartmentService {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	//@Transactional(readOnly=true)
-	public List<Department> getAll(){
+	public List<Department> getAll() {
 		return departmentRepository.getAll();
 	}
 }

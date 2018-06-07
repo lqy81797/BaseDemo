@@ -13,7 +13,7 @@ import com.ie.repository.RoleRepository;
 import com.ie.entities.Menu;
 import com.ie.entities.Role;
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年5月26日 下午5:06:06 
  */
@@ -25,11 +25,11 @@ public class MenuService {
 	@Autowired
 	private RoleRepository roleDao;
 	
-	public List<Menu> listAllMenu(int param1, int param2, int param3) {
+	public List<Menu> listAllMenu(int param1, int param2, int param3) throws Exception {
 		return menuDao.listAllMenu(param1, param2, param3);
 	}
 	
-	public Role getById(int id){
+	public Role getById(int id) throws Exception {
 		return roleDao.getById(id);
 	};
 }

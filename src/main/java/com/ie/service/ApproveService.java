@@ -16,7 +16,7 @@ import com.ie.repository.ApproveRepository;
 import com.ie.repository.ItemBankRepository;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月1日 下午2:18:30 
  */
@@ -30,12 +30,12 @@ public class ApproveService {
 	private ItemBankRepository itemBankDao;
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @return 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月1日 下午2:26:17
 	 */
-	public Approve addApprove(String subject, String remark, String userId, int status) {
+	public Approve addApprove(String subject, String remark, String userId, int status) throws Exception {
 		Approve approve = new Approve();
 		approve.setSubject(subject);
 		approve.setRemark(remark);
@@ -46,38 +46,38 @@ public class ApproveService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月1日 下午3:15:49
 	 */
-	public List<Approve> listAllTodo() {
+	public List<Approve> listAllTodo() throws Exception {
 		return approveDao.listAllTodo();
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月1日 下午3:26:51
 	 */
-	public List<Approve> listAllApproving(String userName) {
+	public List<Approve> listAllApproving(String userName) throws Exception {
 		return approveDao.findByUserId(userName);
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月6日 下午9:07:13
 	 */
-	public List<Approve> getReadyList(User user) {
+	public List<Approve> getReadyList(User user) throws Exception {
 		return approveDao.getReadyList(user.getUserName());
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月7日 上午9:24:10
 	 */
-	public List<ItemBank> getTestItems() {
+	public List<ItemBank> getTestItems() throws Exception {
 		return itemBankDao.getTest();
 	}
 

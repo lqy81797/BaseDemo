@@ -19,7 +19,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 考试审批实体类
  * @date: 2018年5月25日 上午11:10:24 
  */

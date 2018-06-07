@@ -14,12 +14,12 @@ public class MessageService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public void update(String password, User user){
+	public void update(String password, User user) throws Exception {
 		user.setPassword(MD5(password, user.getUserName()));
 		userRepository.save(user);
 	}
 	
-	public String MD5(String password, String userName) {
+	public String MD5(String password, String userName) throws Exception {
 		String hashAlgorithmName = "MD5";
 		Object credentials = password;
 		Object salt = ByteSource.Util.bytes(userName);

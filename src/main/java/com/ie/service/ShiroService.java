@@ -22,16 +22,16 @@ public class ShiroService {
 		System.out.println("shiro...,time:"+new Date());
 	}
 	
-	public User getUserByUserName(String userId) {
+	public User getUserByUserName(String userId) throws Exception {
 		return userDao.getByUserName(userId);
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午9:43:21
 	 */
-	public User find(String userName) {
+	public User find(String userName) throws Exception {
 		User user = userDao.getByUserName(userName);
 		if (user != null) {
 			return user;

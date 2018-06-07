@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.ie.entities.Approve;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月1日 下午1:48:44 
  */
@@ -23,7 +23,7 @@ public interface ApproveRepository extends JpaRepository<Approve, Integer>, JpaS
 	public List<Approve> findByUserId(String userName);
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月6日 下午9:07:53
 	 */

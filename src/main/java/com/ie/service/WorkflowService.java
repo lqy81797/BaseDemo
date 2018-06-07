@@ -17,7 +17,7 @@ import com.ie.entities.Approve;
 import com.ie.repository.ApproveRepository;
 
 /**
- * @author lvqingyang
+ * @author 
  * @Description: 该类的功能描述
  * @date: 2018年6月1日 上午11:24:44 
  */
@@ -30,7 +30,7 @@ public class WorkflowService {
 	@Autowired
 	ProcessEngine processEngine;
 
-	public String startProcess(String userName, String id) {
+	public String startProcess(String userName, String id) throws Exception {
 		String key = "exam";
 		Map<String, Object> variables = new HashMap<String, Object>();
 		variables.put("inputUser", userName);
@@ -44,20 +44,20 @@ public class WorkflowService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月4日 下午1:54:56
 	 */
-	public void saveSubmitTask(String taskId) {		
+	public void saveSubmitTask(String taskId) throws Exception {		
 		processEngine.getTaskService().complete(taskId);
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月4日 下午3:05:34
 	 */
-	public String getTaskId(String id) {
+	public String getTaskId(String id) throws Exception {
 		String key = "exam";
 		String objId = key + "." + id;
 		Task task = processEngine.getTaskService().createTaskQuery()
@@ -68,11 +68,11 @@ public class WorkflowService {
 	}
 
 	/**
-	 * @author: lvqingyang
+	 * @author: 
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月4日 下午9:06:29
 	 */
-	public void setApprove(String id , int status) {
+	public void setApprove(String id , int status) throws Exception {
 		Approve approve = approveDao.findOne(Integer.valueOf(id));
 		approve.setStatus(status);
 		approveDao.save(approve);

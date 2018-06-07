@@ -31,7 +31,7 @@ public class RoleController extends BaseController {
 	@RequestMapping("/goManage")
 	public String goManage() {
 		logger.debug("进入角色管理页面");
-		return "role/manage";
+		return "role/manageRole";
 	}
 
 	@RequestMapping(value = "/management", method = {RequestMethod.GET, RequestMethod.POST})

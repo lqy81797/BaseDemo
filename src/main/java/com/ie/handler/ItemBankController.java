@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -100,6 +101,7 @@ public class ItemBankController extends BaseController {
 	 */
 	@Transactional
 	@RequestMapping("/uploadExcel")
+	@ResponseBody
 	public String uploadExcel(@RequestParam(value="excel") MultipartFile file, HttpServletRequest request, Map<String,Object> map){
 		try{
 			Workbook workbook = getWorkbook(file);
@@ -109,6 +111,7 @@ public class ItemBankController extends BaseController {
 			if(info == true){
 				map.put("backInfo", "excel上传题库成功");
 				logger.debug("excel上传题库成功");
+				
 			} else {
 				map.put("backInfo", "excel上传题库失败");
 				logger.debug("excel上传题库失败");
@@ -116,7 +119,7 @@ public class ItemBankController extends BaseController {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 		}
-		return "item/excel";
+		return this.getJsonStr(new ArrayList<String>());
 	}
 
 	@RequestMapping("/goAdd")

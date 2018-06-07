@@ -1,6 +1,6 @@
 package com.ie.handler;
 
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -56,11 +56,9 @@ public class ExamController extends BaseController {
 	public String goTest(Map<String,Object> map) {
 		try{
 			Date date = new Date();
-			Calendar cal = Calendar.getInstance();   
-			cal.setTime(date);   
-			cal.add(Calendar.HOUR, 1); 
-			date = cal.getTime();
-			map.put("deadLine", date);
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			String dateString = formatter.format(date);
+			map.put("deadLine", dateString);
 			logger.debug("进入考试页面");
 		} catch (Exception e) {
 			logger.error(e.getMessage());

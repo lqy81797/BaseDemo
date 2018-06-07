@@ -13,7 +13,7 @@ import com.ie.entities.Role;
  * @Description: 该类的功能描述
  * @date: 2018年5月26日 下午12:02:00 
  */
-public interface RoleRepository extends JpaRepository<Role, String>,JpaSpecificationExecutor<Role>{
+public interface RoleRepository extends JpaRepository<Role, Integer>,JpaSpecificationExecutor<Role>{
 
 	public Role getById(int id);
 }

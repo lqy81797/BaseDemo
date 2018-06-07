@@ -35,8 +35,6 @@ public class RoleService {
 	 * @author: lvqingyang
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月7日 下午6:52:30
-	 * @param:描述1描述
-	 * @return：返回结果描述
 	 */
 	public boolean update(String id, String name) throws Exception {
 		Role role = new Role();
@@ -44,6 +42,20 @@ public class RoleService {
 		role.setName(name);
 		roleDao.save(role);
 		return true;
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月7日 下午6:58:18
+	 */
+	public boolean delete(String id) {
+		if (roleDao.exists(Integer.valueOf(id))) {
+			roleDao.delete(Integer.valueOf(id));
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

@@ -65,4 +65,22 @@ public class RoleController extends BaseController {
 		}
 		return "role/manage";
 	}
+	
+	@Transactional
+	@RequestMapping("/delete")
+	public String deleteRole(HttpServletRequest request) {
+		try {
+			String id = request.getParameter("id");
+			boolean result = roleService.delete(id);
+			if(result) {
+				logger.debug("删除角色成功");
+			} else {
+				logger.debug("删除角色失败");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return "user/manage";
+	}
+	
 }

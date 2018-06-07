@@ -112,7 +112,7 @@
 								
 						       url : '${base}/ItemBankController/management',
 						       	dataAction:"local",
-						       	pageSize:"8",						       
+						       	pageSize:"10",						       
 						       	enabledEdit: true,
 								clickToEdit:false, 
 								isScroll: false,

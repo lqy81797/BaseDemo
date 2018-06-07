@@ -127,7 +127,7 @@ public class ItemBankController extends BaseController {
 	@ResponseBody
 	public String manageItem(Page page) {
 		List<ItemBank> itemList = itemBankService.listAllItems();
-		itemList = formatDate(itemList);
+//		itemList = formatDate(itemList);
 		return this.getJsonStr(page, itemList);
 	}
 	
@@ -135,16 +135,16 @@ public class ItemBankController extends BaseController {
 	@ResponseBody
 	public String searchItem(@RequestParam(value="question") String question, HttpServletRequest request, Page page){
 		List<ItemBank> itemList = itemBankService.searchItem(question);
-		itemList = formatDate(itemList);
+//		itemList = formatDate(itemList);
 		return this.getJsonStr(page, itemList);
 	}
 	
-	public List<ItemBank> formatDate(List<ItemBank> itemBank) {
-		for(ItemBank item : itemBank) {
-			item.setTime(item.getCreateTime().toString());
-		}
-		return itemBank;
-	}
+//	public List<ItemBank> formatDate(List<ItemBank> itemBank) {
+//		for(ItemBank item : itemBank) {
+//			item.setTime(item.getCreateTime().toString());
+//		}
+//		return itemBank;
+//	}
 	
 	@RequestMapping("/modify")
 	public String modify(HttpServletRequest request, Map<String,Object> map) {

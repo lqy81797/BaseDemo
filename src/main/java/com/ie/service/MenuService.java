@@ -25,6 +25,11 @@ public class MenuService {
 	@Autowired
 	private RoleRepository roleDao;
 	
+	/**
+	 * @author: lvqingyang
+	 * @Description: 根据角色参数生成菜单树
+	 * @date: 2018年6月7日 下午9:33:22
+	 */
 	public List<Menu> listAllMenu(int param1, int param2, int param3) throws Exception {
 		return menuDao.listAllMenu(param1, param2, param3);
 	}

@@ -28,7 +28,7 @@ public class ShiroService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 通过用户名找到用户
 	 * @date: 2018年6月5日 下午9:43:21
 	 */
 	public User find(String userName) throws Exception {

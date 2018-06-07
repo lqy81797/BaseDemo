@@ -30,6 +30,11 @@ public class WorkflowService {
 	@Autowired
 	ProcessEngine processEngine;
 
+	/**
+	 * @author: lvqingyang
+	 * @Description: 启动流程并完成第一步
+	 * @date: 2018年6月7日 下午9:36:12
+	 */
 	public String startProcess(String userName, String id) throws Exception {
 		String key = "exam";
 		Map<String, Object> variables = new HashMap<String, Object>();
@@ -45,7 +50,7 @@ public class WorkflowService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 审批通过
 	 * @date: 2018年6月4日 下午1:54:56
 	 */
 	public void saveSubmitTask(String taskId) throws Exception {		
@@ -54,7 +59,7 @@ public class WorkflowService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 根据审批id获得taskId
 	 * @date: 2018年6月4日 下午3:05:34
 	 */
 	public String getTaskId(String id) throws Exception {
@@ -69,7 +74,7 @@ public class WorkflowService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 修改审批状态
 	 * @date: 2018年6月4日 下午9:06:29
 	 */
 	public void setApprove(String id , int status) throws Exception {

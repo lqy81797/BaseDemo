@@ -27,7 +27,7 @@ public class UserService {
 	
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 列出全部用户
 	 * @date: 2018年6月5日 下午2:58:04
 	 */
 	public List<User> listAllUsers() throws Exception {

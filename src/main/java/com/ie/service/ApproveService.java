@@ -32,7 +32,7 @@ public class ApproveService {
 	/**
 	 * @author: 
 	 * @return 
-	 * @Description: 该函数的功能描述
+	 * @Description: 添加审批
 	 * @date: 2018年6月1日 下午2:26:17
 	 */
 	public Approve addApprove(String subject, String remark, String userId, int status) throws Exception {
@@ -47,7 +47,7 @@ public class ApproveService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 列出全部待办事项
 	 * @date: 2018年6月1日 下午3:15:49
 	 */
 	public List<Approve> listAllTodo() throws Exception {
@@ -56,7 +56,7 @@ public class ApproveService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 列出学生的全部申请
 	 * @date: 2018年6月1日 下午3:26:51
 	 */
 	public List<Approve> listAllApproving(String userName) throws Exception {
@@ -65,7 +65,7 @@ public class ApproveService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 列出已通过的考试申请
 	 * @date: 2018年6月6日 下午9:07:13
 	 */
 	public List<Approve> getReadyList(User user) throws Exception {
@@ -74,7 +74,7 @@ public class ApproveService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 随机选题
 	 * @date: 2018年6月7日 上午9:24:10
 	 */
 	public List<ItemBank> getTestItems() throws Exception {

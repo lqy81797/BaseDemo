@@ -24,7 +24,7 @@ public class RoleService {
 
 	/**
 	 * @author: 
-	 * @Description: 该函数的功能描述
+	 * @Description: 列出全部角色
 	 * @date: 2018年6月7日 下午3:13:42
 	 */
 	public List<Role> listAllRoles() throws Exception {
@@ -33,7 +33,7 @@ public class RoleService {
 
 	/**
 	 * @author: lvqingyang
-	 * @Description: 该函数的功能描述
+	 * @Description: 修改角色
 	 * @date: 2018年6月7日 下午6:52:30
 	 */
 	public boolean update(String id, String name) throws Exception {
@@ -46,7 +46,7 @@ public class RoleService {
 
 	/**
 	 * @author: lvqingyang
-	 * @Description: 该函数的功能描述
+	 * @Description: 删除角色
 	 * @date: 2018年6月7日 下午6:58:18
 	 */
 	public boolean delete(String id) {

@@ -98,6 +98,11 @@ public class ApproveController extends BaseController {
 		}
 	}
 
+	/**
+	 * @author: lvqingyang
+	 * @Description: 日期转字符串
+	 * @date: 2018年6月7日 下午9:14:54
+	 */
 	public List<Approve> formatDate(List<Approve> approve) {
 		try{
 			for(Approve app : approve) {

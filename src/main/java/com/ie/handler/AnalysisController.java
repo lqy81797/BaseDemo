@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ie.handler;
 
 import org.springframework.stereotype.Controller;
@@ -10,7 +7,7 @@ import com.ie.util.BaseController;
 
 /**
  * @author 
- * @Description: 该类的功能描述
+ * @Description: 统计分析
  * @date: 2018年6月7日 下午1:58:32 
  */
 @Controller

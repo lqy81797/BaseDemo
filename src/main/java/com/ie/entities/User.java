@@ -37,6 +37,7 @@ public class User implements Serializable {
 
 	private String password;
 
+	//真实姓名
 	private String name;
 	
 	private Integer roleId;

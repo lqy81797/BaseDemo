@@ -34,14 +34,19 @@ public class Approve implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String subject;//申请科目
+	//申请科目
+	private String subject;
 	
+	//备注
 	private String remark;
 	
+	//审批状态
 	private int status;
 	
+	//审批人用户名
 	private String userId;
 	
+	//审批创建时间
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 	

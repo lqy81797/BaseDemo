@@ -32,7 +32,7 @@ public class UserController extends BaseController {
 	@RequestMapping("/goManage")
 	public String goManage() {
 		logger.debug("进入用户管理页面");
-		return "user/manage";
+		return "item/manageUser";
 	}
 
 	@RequestMapping(value = "/management", method = {RequestMethod.GET, RequestMethod.POST })

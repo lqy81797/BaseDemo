@@ -3,7 +3,10 @@
  */
 package com.ie.handler;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,15 +31,15 @@ import com.ie.util.Page;
 @Controller
 @RequestMapping("/ExamController")
 public class ExamController extends BaseController {
-	
+
 	@Autowired
 	ApproveService approveService;
-	
+
 	@RequestMapping("/goReady")
 	public String goReady() {
 		return "systemTest/ready";
 	}
-	
+
 	@RequestMapping("/ready")
 	@ResponseBody
 	public String ready(HttpServletRequest request, Page page){
@@ -44,12 +47,18 @@ public class ExamController extends BaseController {
 		List<Approve> approveList = approveService.getReadyList(user);
 		return this.getJsonStr(page, approveList);
 	}
-	
+
 	@RequestMapping("/goTest")
-	public String goTest() {
+	public String goTest(Map<String,Object> map) {
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();   
+		cal.setTime(date);   
+		cal.add(Calendar.HOUR, 1); 
+		date = cal.getTime();
+		map.put("deadLine", date.toString());
 		return "systemTest/exam";
 	}
-	
+
 	@RequestMapping("/test")
 	@ResponseBody
 	public String test(HttpServletRequest request, Page page){

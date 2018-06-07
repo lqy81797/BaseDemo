@@ -271,6 +271,7 @@
 			<artifactId>itext</artifactId>
 			<version>4.2.1</version>
 		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>BaseFramework</finalName>

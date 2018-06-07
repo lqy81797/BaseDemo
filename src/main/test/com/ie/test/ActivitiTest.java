@@ -1,12 +1,16 @@
 package com.ie.test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
+import org.activiti.engine.task.TaskInfoQuery;
+import org.activiti.engine.task.TaskQuery;
 import org.junit.Test;
 
 public class ActivitiTest {
@@ -25,17 +29,19 @@ public class ActivitiTest {
 				.addClasspathResource("diagrams/exam.bpmn")
 				.addClasspathResource("diagrams/exam.png")
 				.deploy();
-		System.out.println(deploy.getId());
-		System.out.println(deploy.getName());
+		assert(deploy.getName() == "exam");
 	}
 
 	@Test
 	public void startProcess() {
 		String key = "exam";
-		ProcessInstance instance = processEngine.getRuntimeService()
-				.startProcessInstanceByKey(key);
-		System.out.println(instance.getId());
-		System.out.println(instance.getProcessDefinitionId());
+		Map<String, Object> variables = new HashMap<String, Object>();
+		variables.put("inputUser", "userName");
+		String objId = key + "." + "id";
+		variables.put("objId", objId);
+		ProcessInstance instance = processEngine.getRuntimeService().startProcessInstanceByKey(key, objId, variables);
+		assert(instance.getProcessVariables().get("inputUser") == "userName");
+		assert(instance.getProcessVariables().get("objId") == "exam.id");
 	}
 	
 	@Test
@@ -46,8 +52,25 @@ public class ActivitiTest {
 				.list();
 		if(list != null && list.size() > 0){
 			for(Task task : list) {
-				System.out.println(task.getId());
-				System.out.println(task.getName());
+				assert(task.getName() == "申请考试");
+			}
+		}
+	}
+	
+	@Test
+	public void complete() {
+		List<Task> list = processEngine.getTaskService()
+				.createTaskQuery()
+				.processDefinitionKey("exam")
+				.list();
+		if(list != null && list.size() > 0){
+			for(Task task : list) {
+				processEngine.getTaskService().complete(task.getId());
+				assert(task.getName() == "审批考试");
+				assert((processEngine.getTaskService()
+						.createTaskQuery()
+						.taskAssignee("teacher")
+						.list().size() > 0));
 			}
 		}
 	}

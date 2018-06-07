@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ie.handler;
 
 import javax.servlet.http.HttpServletRequest;

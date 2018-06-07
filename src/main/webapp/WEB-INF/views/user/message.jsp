@@ -93,7 +93,7 @@
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
-		<form method="post" action="${base}/MassageController/update.do "
+		<form method="post" action="${base}/MessageController/update.do "
 			class="form-horizontal" role="form" id="myForm" onsubmit="return ">
 			<fieldset>
 

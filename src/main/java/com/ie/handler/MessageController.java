@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ie.entities.User;
-import com.ie.service.MassageService;
+import com.ie.service.MessageService;
 import com.ie.util.DemoUtil;  
 
 @Controller
-@RequestMapping("/MassageController")
-public class MassageController  {  
+@RequestMapping("/MessageController")
+public class MessageController  {  
     private static final long serialVersionUID = 1L; 
     
     @Autowired
-    MassageService massageService;
+    MessageService messageService;
          
  
     @RequestMapping("/update")
@@ -31,9 +31,9 @@ public class MassageController  {
         String newPassword=request.getParameter("renewPas");  
         String nowPassword = request.getParameter("nowPas");
                  
-        massageService.update(newPassword, user);
+        messageService.update(newPassword, user);
                   
-        return new ModelAndView("redirect:/MassageController/goAdd.do");
+        return new ModelAndView("redirect:/MessageController/goAdd.do");
  
     }  
     
@@ -47,7 +47,7 @@ public class MassageController  {
     	map.put("password", user.getPassword());
     	map.put("email", user.getEmail());
     	
-        return "user/massage";
+        return "user/message";
  
     }  
     

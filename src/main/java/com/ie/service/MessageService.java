@@ -9,13 +9,11 @@ import com.ie.entities.User;
 import com.ie.repository.UserRepository;
 
 @Service
-public class MassageService {
-	
+public class MessageService {
 	
 	@Autowired
 	private UserRepository userRepository;
 
-	
 	public void update(String password, User user){
 		user.setPassword(MD5(password, user.getUserName()));
 		userRepository.save(user);

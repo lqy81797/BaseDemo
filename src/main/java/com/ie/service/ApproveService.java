@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ie.entities.Approve;
+import com.ie.entities.ItemBank;
 import com.ie.entities.User;
 import com.ie.repository.ApproveRepository;
+import com.ie.repository.ItemBankRepository;
 
 /**
  * @author lvqingyang
@@ -23,6 +25,9 @@ public class ApproveService {
 	
 	@Autowired
 	private ApproveRepository approveDao;
+	
+	@Autowired
+	private ItemBankRepository itemBankDao;
 
 	/**
 	 * @author: lvqingyang
@@ -65,6 +70,15 @@ public class ApproveService {
 	 */
 	public List<Approve> getReadyList(User user) {
 		return approveDao.getReadyList(user.getUserName());
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月7日 上午9:24:10
+	 */
+	public List<ItemBank> getTestItems() {
+		return itemBankDao.getTest();
 	}
 
 }

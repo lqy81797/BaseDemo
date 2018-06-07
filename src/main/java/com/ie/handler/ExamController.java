@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ie.entities.Approve;
+import com.ie.entities.ItemBank;
 import com.ie.entities.User;
 import com.ie.service.ApproveService;
 import com.ie.util.BaseController;
@@ -33,7 +34,7 @@ public class ExamController extends BaseController {
 	
 	@RequestMapping("/goReady")
 	public String goReady() {
-		return "exam/ready";
+		return "systemTest/ready";
 	}
 	
 	@RequestMapping("/ready")
@@ -43,5 +44,16 @@ public class ExamController extends BaseController {
 		List<Approve> approveList = approveService.getReadyList(user);
 		return this.getJsonStr(page, approveList);
 	}
-
+	
+	@RequestMapping("/goTest")
+	public String goTest() {
+		return "systemTest/exam";
+	}
+	
+	@RequestMapping("/test")
+	@ResponseBody
+	public String test(HttpServletRequest request, Page page){
+		List<ItemBank> itemBankList = approveService.getTestItems();
+		return this.getJsonStr(page, itemBankList);
+	}
 }

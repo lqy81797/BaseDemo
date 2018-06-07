@@ -27,7 +27,7 @@ public interface ApproveRepository extends JpaRepository<Approve, Integer>, JpaS
 	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月6日 下午9:07:53
 	 */
-	@Query(value="from Approve a where status = 0")
+	@Query(value="from Approve a where status = 1 and userId = ?1")
 	public List<Approve> getReadyList(String userName);
 }
 

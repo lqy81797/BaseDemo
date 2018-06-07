@@ -11,6 +11,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.ie.entities.ItemBank;
 import com.ie.entities.Menu;
+import com.ie.util.DemoUtil;
 
 /**
  * @author lvqingyang
@@ -20,5 +21,8 @@ import com.ie.entities.Menu;
 public interface ItemBankRepository extends JpaRepository<ItemBank, Integer>, JpaSpecificationExecutor<ItemBank> {
 	@Query(value="from ItemBank i where question like ?1")
 	public List<ItemBank> searchItem(String str);
+	
+	@Query(value="from ItemBank i order by rand() limit " + DemoUtil.ITEM_COUNT)
+	public List<ItemBank> getTest();
 
 }

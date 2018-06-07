@@ -32,7 +32,7 @@ public class WorkflowService {
 
 	/**
 	 * @author: lvqingyang
-	 * @Description: 启动流程并完成第一步
+	 * @Description: 启动流程
 	 * @date: 2018年6月7日 下午9:36:12
 	 */
 	public String startProcess(String userName, String id) throws Exception {

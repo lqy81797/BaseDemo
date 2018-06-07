@@ -23,7 +23,11 @@ public class WorkflowController extends BaseController {
 	@Autowired
 	private WorkflowService workflowService;
 
-	// 启动流程
+	/**
+	 * @author: lvqingyang
+	 * @Description: 启动流程并完成第一步
+	 * @date: 2018年6月7日 下午9:36:12
+	 */
 	@RequestMapping("/startProcess")
 	public String startProcess(HttpServletRequest request, @RequestParam("id") String id) {
 		// 更新请假状态，启动流程实例，让启动的流程实例关联业务
@@ -40,7 +44,11 @@ public class WorkflowController extends BaseController {
 		return "student/approveForStudent";
 	}
 
-	//提交任务
+	/**
+	 * @author: lvqingyang
+	 * @Description: 完成审批
+	 * @date: 2018年6月7日 下午9:36:12
+	 */
 	@RequestMapping("/submit")
 	public String submitTask(HttpServletRequest request, String id) {
 		try {

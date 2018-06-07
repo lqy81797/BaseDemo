@@ -33,7 +33,6 @@ public class RoleService {
 
 	/**
 	 * @author: lvqingyang
-	 * @param isUse 
 	 * @Description: 修改角色
 	 * @date: 2018年6月7日 下午6:52:30
 	 */

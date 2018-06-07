@@ -68,7 +68,7 @@ public class ExamController extends BaseController {
 		return "systemTest/exam";
 	}
 
-	@RequestMapping("/test")
+	@RequestMapping(value="/test",produces="text/json;charset=UTF-8")
 	@ResponseBody
 	public String test(HttpServletRequest request){
 		try{

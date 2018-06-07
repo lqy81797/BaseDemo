@@ -9,7 +9,7 @@ package com.ie.util;
  * @date: 2018年5月26日 下午1:55:40 
  */
 public class DemoUtil {
-	public static final int ITEM_COUNT = 20; 
+	public static final int ITEM_COUNT = 10; 
 	
 	public static final String SESSION_USER = "sessionUser";
 	

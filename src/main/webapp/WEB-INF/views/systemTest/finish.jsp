@@ -13,7 +13,7 @@ h2{
 padding-top:10px;
 }
 #test-pad{
-padding-top:1cm;
+padding-top:5%;
 }
 .result{
 padding-top:2cm;
@@ -26,8 +26,7 @@ padding-top:3cm;
 }
 .score_pad{
 	border:1px dashed #0000FF ;
-	height:70%;
-	weight:100%；
+	height:80%;
 }
 
 </style>
@@ -45,7 +44,7 @@ padding-top:3cm;
 						您本次的成绩为：
 					</h2>
 					<h3 class="col-md-offset-5 text-warning" id="score">
-						88 分
+						80 分
 					</h3>
 					<div id="confirm">
 					<button type="button" class="btn btn-success col-md-offset-5">确认</button>
@@ -73,8 +72,8 @@ var option = {
     series: [{
         type: 'pie',
         data: [
-            {name: '正确', value: 15},
-            {name: '错误', value: 5}
+            {name: '正确', value: 8},
+            {name: '错误', value: 2}
         ]
     }]
 };

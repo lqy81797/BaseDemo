@@ -105,7 +105,7 @@ $(function(){ window.onresize=function(){
 			<div id="left" class="col-lg-2 ">
 				<div id="leftTree"></div>
 			</div>
-			<iframe id="frmDemo" height="" src="user.jsp" width="83%" frameborder="0" scrolling="no"onload="changeFrameHeight()" ></iframe>
+			<iframe id="frmDemo" height="" src="user.jsp" width="83%" frameborder="0" scrolling="auto"onload="changeFrameHeight()" ></iframe>
 		</div>
 
 	</div>

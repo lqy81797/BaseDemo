@@ -17,7 +17,7 @@ background-color: #FFFFBB;
 	font-size: 14px;
 }
 
-.radio-beauty-container {
+.testChecks{
 	font-size: 0;
 	padding-top: 2%;
 /* 	padding-left: 20%; */
@@ -53,7 +53,7 @@ background-color: #FFFFBB;
 	box-shadow: 0 0 7px #0066FF;
 }
 
-#question{
+h5{
 	padding-top: 2%;
 }
 #button-group {
@@ -61,12 +61,12 @@ background-color: #FFFFBB;
 }
 </style>
 <script type="text/javascript">
-function IFrameResize()
+/* function IFrameResize()
 {   //得到父页面的iframe框架的对象
     var obj = parent.document.getElementById("frmDemo");
         //把当前页面内容的高度动态赋给iframe框架的高
     obj.height = this.document.body.scrollHeight;
-} 
+}  */
 $(function(){
 	$.ajax({
 		url:"${base}/ExamController/test.do",
@@ -91,7 +91,6 @@ $(function(){
 		
 		
 	});
-	alert('${deadLine}');
 	$('#clock').countdown('${deadLine}').on('update.countdown',
 			function(event) {
 				
@@ -127,7 +126,7 @@ $(function(){
 })
 </script>
 </head>
-<body onload="IFrameResize();">
+<body >
 	<div class="container-fluid">
 		<div class="row-fluid clearfix" id="test-area">
 			<div class="col-md-12 column">
@@ -140,7 +139,7 @@ $(function(){
 						<div class="col-md-12 column" id="button-group">
 						<button class="btn btn-danger" type="button" id="preview">取消</button>
 						<button class="btn btn-success" type="button" id="next" onlick="click()">交卷</button>
-					</div>
+						</div>
 					</div>
 					</form>
 					
@@ -154,34 +153,25 @@ $(function(){
 							</h5>
 
 							<!------------选项区---------------->
-							<div class="radio-beauty-container">
-								<div class="row-fluid clearfix testRadios">
-									<label> <input type="radio" name="testName" id="test1"
-										value="A" hidden /> <label for="test1" class="radio-beauty"></label>
-										<span class="radio-name" name="optionA" >A.</span>
-									</label>
+								<div class ="form-inline clearfix testRadios">
+								<input class ="checkbox" type="checkbox" name="answer" id="a" value="A">
+								<label for ="a" name="optionA">A.</label>
 								</div>
-								<div class="row-fluid clearfix testRadios">
-									<label> <input type="radio" name="testName" id="test2"
-										value="B" hidden /> <label for="test2" class="radio-beauty"></label>
-										<span class="radio-name" name="optionB">B.</span>
-									</label>
+								<div class ="form-inline clearfix testRadios">
+									 <input class="checkbox" type="checkbox" name="answer" id="b" value="B">
+										<label for="b"  name="optionB">A.</label>
 								</div>
-								<div class="row-fluid clearfix testRadios">
-									<label> <input type="radio" name="testName" id="test3"
-										value="C" hidden /> <label for="test3" class="radio-beauty"></label>
-										<span class="radio-name" name="optionC">C.</span>
-									</label>
+								<div class ="form-inline clearfix testRadios">
+									<input class="checkbox" type="checkbox" name="answer" id="c" value="C">
+										<label for="c"  name="optionC">A.</label>
 								</div>
-								<div class="row-fluid clearfix testRadios">
-									<label> <input type="radio" name="testName" id="test4"
-										value="D" hidden /> <label for="test4" class="radio-beauty"></label>
-										<span class="radio-name" name="optionD">D.</span>
-									</label>
+								<div class ="form-inline clearfix testRadios">
+									<input class ="checkbox" type="checkbox" name="answer" id="d" value="D">
+										<label for ="d"  name ="optionD">A.</label>
 								</div>
+								<div class ="line"></div>
 							</div>
 							
-						</div>
 					</div>
 				
 			</div>
@@ -189,17 +179,7 @@ $(function(){
 	</div>
 	<script type="text/javascript">
 			
-		$('#clock').countdown('2020/10/10 12:34:56').on('update.countdown',
-				function(event) {
-					var format = '%H:%M:%S';
-					$(this).html(event.strftime(format));
-				}).on(
-				'finish.countdown',
-				function(event) {
-					$(this).html('This offer has expired!').parent().addClass(
-							'disabled');
-
-				});
+		
 		$(function(){
 	        $('button').click(function(){
 	        	window.location.href = "${base}//ExamController/goSubmit";

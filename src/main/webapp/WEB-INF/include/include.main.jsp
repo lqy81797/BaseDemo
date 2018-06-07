@@ -16,7 +16,8 @@
 	<!-- ligerUI css -->
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/Aqua/css/ligerui-all.css" />
 	<link rel="stylesheet" href="${base}/resource/controls/ligerUI/skins/ligerui-icons.css" />
-	
+	<!-- magic-check css -->
+	<link rel="stylesheet" href="${base}/resource/controls/magic-check/magic-check.css" />
 	<link rel="stylesheet"  href="${base}/resource/controls/validateForm/css/style.css" />
 	<!-- IE 兼容性支持 CSS 开始 -->
 	<!--[if lte IE 8]>
@@ -48,6 +49,7 @@
 	<script src="${base}/resource/controls/jQuery.Table2014/Table2014.js" ></script>
 	<!-- echarts -->
 	<script src="${base}/resource/controls/echarts/echarts.js" ></script>
+	<script src="${base}/resource/controls/echarts/roma.js" ></script>
 	<!-- 日期插件 js -->
 	<script src="${base}/resource/controls/My97DatePicker/WdatePicker.js"></script>
 	<!-- ligerUI js -->

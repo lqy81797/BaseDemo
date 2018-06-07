@@ -26,21 +26,14 @@
 				</ul>
 				<div class="row-fluid ">
 					<form role="form" id="testform" accept-charset="UTF-8">
-						<div class = "form-group">
-						<div class="col-md-2 column">
-							<h4 class="text-center" style="padding-top:5%;">试题题干： </h4>
-						</div>
-						<div class="col-md-10 column">
+						<div class = "form-group form-inline">
+							<b><span class="text-center" style="padding-top:5%;">试题题干： </span></b>
 							<textarea id="testContent" class="form-control" name="question"
 								style="width: 100%; height: 10%;">请输入试题题干
-					</textarea>
+							</textarea>
 						</div>
-						</div>
-						<div class = "form-group" style="margin-top:5%">
-						<div class="col-md-2 column" >
-							<h4 class="text-center" style="padding-top:10%;">试题选项： </h4>
-						</div>
-						<div class="col-md-10 column">
+						<div class = "form-group form-inline" style="margin-top:5%">
+							<b><span class="text-center" style="padding-top:10%;">试题选项： </span></b>
 							<div class="input-group input-group-lg">
 								<span class="input-group-addon">选项A：</span> <input type="text"
 									class="form-control" placeholder="请输入选项 A" name="optionA"
@@ -66,19 +59,14 @@
 							</div>
 							<br>
 						</div>
-						</div>
-						<div class = "form-group">
-						<div class="col-md-2 column">
-						<h4 class="text-center" style="padding-top:5%;">试题答案： </h4>
-						</div>
-						<div class="col-md-10 column">
+						<div class = "form-group form-inline">
+						<b><span class="text-center" style="padding-top:5%;">试题答案： </span></b>
 							<select name="answer" class="form-control">
 								<option value="A">A</option>
 								<option value="B">B</option>
 								<option value="C">C</option>
 								<option value="D">D</option>
 							</select> <br>
-						</div>
 						</div>
 
 						<div class="col-md-4 col-md-offset-5 column">

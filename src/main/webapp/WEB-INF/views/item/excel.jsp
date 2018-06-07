@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/include/include.comm.jsp"%>
-<%@ include file="/WEB-INF/include/include.base.jsp"%>
 <%@ include file="/WEB-INF/include/include.main.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +44,15 @@ $(function () {
       
 })  
 </script>
+<style>
+#upload{
+padding-top:2%;
+}
+#download{
+margin-top:2%;
+}
 
+</style>
 </head>
 <body>
 	<div class="container-fluid">
@@ -57,11 +64,11 @@ $(function () {
 					<li class="active">批量导入试题</li>
 				</ul>
 				<h4 class="text-info text-left">
-					<div>1、下载Excel模板</div>
+					1、下载Excel模板
 				</h4>
-				<input type="button" ,class="btn btn-link" value="点击下载Excel模板" onClick="downloadDemo()">
+				<input type="button" id="download" class="btn btn-primary" value="点击下载Excel模板" onClick=" downloadDemo()">
 				<form role="form" method="post" class="form-horizontal">
-				<h4 class="text-info text-left">2、上传试题</h4>
+				<h4 class="text-info text-left" id="upload">2、上传试题</h4>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">文件上传:</label>
 					<div class="col-md-12">

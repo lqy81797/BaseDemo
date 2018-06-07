@@ -18,20 +18,19 @@
 				</ul>
 				<div class="col-md-12 column">
 					<div id="searchbar">
-						考试名称：<input id="testname" name="testname" type="text" />  
-						<input id="searchResult"
-							type="button" value="查询" onclick="f_search()" />
+						考试名称：<input id="testname" name="testname" type="text" /> <input
+							id="searchResult" type="button" value="查询" onclick="f_search()" />
 					</div>
 					<div id="approveList"></div>
 				</div>
 			</div>
-			</div>
-			</div>
+		</div>
+	</div>
 
 	<script type="text/javascript">
 		var checkedCustomer = [];
 		var demoGrid = null;
-		var toolbarOptions = {
+		/* var toolbarOptions = {
 			items : [ {
 				text : '申请考试',
 				click : itemclick,
@@ -44,8 +43,8 @@
 				click : itemclick,
 				icon : 'delete'
 			} ]
-		};
-		
+		}; */
+
 		$(function() {
 			demoGrid = $("#approveList")
 					.ligerGrid(
@@ -62,44 +61,34 @@
 											name : 'time',
 											align : 'left'
 										},
-										{
-											display : '状态',
-											name : 'status',
-											align : 'left',
-											render: function (item)
-							                 {
-							                        if (parseInt(item.status) == 0) return '未申请';
-							                        else if (parseInt(item.status) == -1) return '待审批';
-							                        return '已通过';
-							                  }
-										},
+
 										{
 											display : '操作',
 											isAllowHide : false,
 											render : function(row) {
-													return "<a href='javascript:jump(&quot;"
-															+ row.id
-															+ "&quot;)'>申请</a>"
-												}
+												return "<a href='javascript:jump(&quot;"
+														+ row.id
+														+ "&quot;)'>开始考试</a>"
+											}
 										} ],
-								url:"${base}/ApproveController/approving",
-								usePager : true,
+								url : "${base}/ExamController/ready.do",
 								rownumbers : true,
 								pageSize : 20,
 								heightDiff : -5,
-								toolbar : toolbarOptions
 							/* autoFilter: true */
 
 							});
 			$("#pageloading").hide();
 
 		});
-		function jump(rowid){
+		
+		/* 跳转到考试页面  */
+		function jump(rowid) {
 			alert(rowid);
-			window.location.href = "${base}/WorkflowController/startProcess.do?id="+ rowid;
+			window.location.href = "${base}//ExamController/goTest";
 		}
-		
-		
+
+		/* 
 		function itemclick(item) {
 			switch (item.text) {
 			case "申请考试":
@@ -115,10 +104,11 @@
 				break;
 
 			}
-		}
-		function f_open()
-	    { $.ligerDialog.open({ url:'${base}/ApproveController/goAddApply.do', width:400, height: 300, modal: false, isResize: true });
-	    }
+		} */
+
+		/* function f_open()
+		{ $.ligerDialog.open({ url:'${base}/ApproveController/goAddApply.do', width:400, height: 300, modal: false, isResize: true });
+		} */
 		//$("#approve").click
 	</script>
 </body>

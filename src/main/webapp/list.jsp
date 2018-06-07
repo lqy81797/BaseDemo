@@ -26,6 +26,13 @@ iframe {
 }
 </style>
 <script>
+function changeFrameHeight(){
+    var ifm= document.getElementById("frmDemo");
+    ifm.height=document.documentElement.clientHeight-56; //56是头顶的高度，和网友估计不一样。
+}
+$(function(){ window.onresize=function(){
+        changeFrameHeight(); }}); 
+
 	var selectedNode;
 	var tree;
 	var proid = '${sessionScope.id}';
@@ -98,7 +105,7 @@ iframe {
 			<div id="left" class="col-lg-2 ">
 				<div id="leftTree"></div>
 			</div>
-			<iframe id="frmDemo" src="user.jsp" width="83%" frameborder="0" scrolling="no"onload="changeFrameHeight()" ></iframe>
+			<iframe id="frmDemo" height="" src="user.jsp" width="83%" frameborder="0" scrolling="no"onload="changeFrameHeight()" ></iframe>
 		</div>
 
 	</div>
@@ -112,13 +119,7 @@ iframe {
 	console.log(height);
 	}catch (ex){}
 	window.setInterval("reinitIframe()", 200); */
-	   function changeFrameHeight(){
-        var ifm= document.getElementById("frmDemo");
-        ifm.height=document.documentElement.clientHeight-56; //56是头顶的高度，和网友估计不一样。
-    }
-    $(function(){ window.onresize=function(){
-            changeFrameHeight(); }}); 
-    
+	
     
     function logout(){
     	$.ajax({

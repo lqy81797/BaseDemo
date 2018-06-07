@@ -40,12 +40,14 @@
 	<!-- kindeditor js -->
 	<script src="${base}/resource/controls/kindeditor/kindeditor-all-min.js" ></script>
 	<script src="${base}/resource/controls/kindeditor/lang/zh-CN.js" ></script>
-	<!-- iframe-resizer js -->
-	
+	<!-- countdown js -->
+	<script src="${base}/resource/controls/jquery.countdown/jquery.countdown.min.js" ></script>
 	<!-- $.cookie -->
 	<script src="${base}/resource/Scripts/jquery.cookie.min.js" ></script>
 	<!-- table2014 js -->
 	<script src="${base}/resource/controls/jQuery.Table2014/Table2014.js" ></script>
+	<!-- echarts -->
+	<script src="${base}/resource/controls/echarts/echarts.js" ></script>
 	<!-- 日期插件 js -->
 	<script src="${base}/resource/controls/My97DatePicker/WdatePicker.js"></script>
 	<!-- ligerUI js -->

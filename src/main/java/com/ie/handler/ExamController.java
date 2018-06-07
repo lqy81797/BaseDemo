@@ -60,7 +60,7 @@ public class ExamController extends BaseController {
 			cal.setTime(date);   
 			cal.add(Calendar.HOUR, 1); 
 			date = cal.getTime();
-			map.put("deadLine", date.toString());
+			map.put("deadLine", date);
 			logger.debug("进入考试页面");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
@@ -79,5 +79,11 @@ public class ExamController extends BaseController {
 			logger.error(e.getMessage());
 			return null;
 		}
+	}
+	
+	@RequestMapping("/goSubmit")
+	public String goSubmit(HttpServletRequest request){
+		logger.debug("进入考试成绩页面");
+		return "systemTest/finish";
 	}
 }

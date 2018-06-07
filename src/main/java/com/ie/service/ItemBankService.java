@@ -75,7 +75,7 @@ public class ItemBankService {
 	 * @Description: 读取excel数据并插入题库
 	 * @date: 2018年5月30日 下午7:20:13
 	 */
-	public boolean loadExcelDataAndSave(Workbook workbook, User createUser, Date createDate) throws Exception {
+	public boolean loadExcelDataAndSave(Workbook workbook, User createUser, Date createDate) {
 		try{
 			for (int numSheet = 0; numSheet < workbook.getNumberOfSheets(); numSheet++) {
 				Sheet sheet = workbook.getSheetAt(numSheet);
@@ -102,6 +102,7 @@ public class ItemBankService {
 						itemBank.setAnswer(answer.getStringCellValue());
 						itemBank.setCreateUser(createUser.getUserName());
 						itemBank.setCreateTime(createDate);
+						itemBankDao.save(itemBank);
 					}
 				}
 			}

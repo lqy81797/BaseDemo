@@ -1,12 +1,12 @@
 package com.ie.handler;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ie.entities.User;
 import com.ie.service.ShiroService;
@@ -92,11 +93,12 @@ public class ShiroHandler extends BaseController {
 	}
 	
 	@RequestMapping("/logout")
+	@ResponseBody
 	public String logout(HttpSession session) {
 		if (session != null) {
 			session.invalidate();
 			logger.debug("注销成功");
 		}
-		return null;
+		return this.getJsonStr(new ArrayList<String>());
 	}
 }

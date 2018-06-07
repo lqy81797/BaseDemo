@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ie.handler;
 
 import java.util.Calendar;
@@ -61,8 +58,8 @@ public class ExamController extends BaseController {
 
 	@RequestMapping("/test")
 	@ResponseBody
-	public String test(HttpServletRequest request, Page page){
+	public String test(HttpServletRequest request){
 		List<ItemBank> itemBankList = approveService.getTestItems();
-		return this.getJsonStr(page, itemBankList);
+		return this.getJsonStr(itemBankList);
 	}
 }

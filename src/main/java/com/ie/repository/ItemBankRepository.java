@@ -21,7 +21,7 @@ public interface ItemBankRepository extends JpaRepository<ItemBank, Integer>, Jp
 	@Query(value="from ItemBank i where question like ?1")
 	public List<ItemBank> searchItem(String str);
 	
-	@Query(value="from ItemBank i order by rand() limit " + DemoUtil.ITEM_COUNT , nativeQuery=true)
+	@Query(value="select * from ItemBank order by rand() limit " + DemoUtil.ITEM_COUNT , nativeQuery=true)
 	public List<ItemBank> getTest();
 
 }

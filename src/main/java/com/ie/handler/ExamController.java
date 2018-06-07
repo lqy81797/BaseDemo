@@ -52,10 +52,12 @@ public class ExamController extends BaseController {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	@RequestMapping("/goTest")
 	public String goTest(Map<String,Object> map) {
 		try{
 			Date date = new Date();
+			date.setHours(date.getHours() + 1);
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			String dateString = formatter.format(date);
 			map.put("deadLine", dateString);

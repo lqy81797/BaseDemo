@@ -50,13 +50,19 @@ public class RoleController extends BaseController {
 	@Transactional
 	@RequestMapping("/update")
 	public String updateRole(HttpServletRequest request) {
+		try{
+			String id = request.getParameter("id");
+			String name = request.getParameter("name");
 
-		//		if(result) {
-		//			//log
-		//		} else {
-		//			//log
-		//		}
-		logger.debug("修改角色成功");
-		return "user/manage";
+			boolean result = roleService.update(id, name);
+			if(result) {
+				logger.debug("修改角色成功");
+			} else {
+				logger.debug("修改角色失败");
+			}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		}
+		return "role/manage";
 	}
 }

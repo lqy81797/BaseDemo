@@ -96,6 +96,7 @@ public class UserService {
 		user.setPhone(userStr[2]);
 		user.setEmail(userStr[3]);
 		user.setRoleId(Integer.valueOf(userStr[4]));
+		userDao.save(user);
 		return true;
 	}
 }

@@ -123,7 +123,7 @@
 								
 							});
 		    });
-		    
+		  /*查询功能！！*/
 		$(function(){  
 			  $.ajax({  
 			  url: '${base}/ItemBankController/management',  

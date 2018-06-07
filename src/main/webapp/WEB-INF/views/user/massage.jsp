@@ -22,34 +22,24 @@
 	$().ready(function() {
 		$("#myForm").validate({
 			rules : {
-				nowPas : {
-					required : true,
-					minlength : 6,
-					equalTo : "#userpassword"
-				},
 				newPas : {
 					required : true,
-					minlength : 6
+					minlength : 5
 				},
 				renewPas : {
 					required : true,
-					minlength : 6,
+					minlength : 5,
 					equalTo : "#newPas"
 				},
 			},
 			messages : {
-				nowPas : {
-					required : "请输入密码",
-					minlength : "密码长度不能小于 6 个字符",
-					equalTo : "请输入正确的密码"
-				},
 				newPas : {
 					required : "请输入新密码",
-					minlength : "密码长度不能小于 6 个字符",
+					minlength : "密码长度不能小于5 个字符",
 				},
 				renewPas : {
 					required : "请再次输入密码",
-					minlength : "密码长度不能小于 6 个字符",
+					minlength : "密码长度不能小于 5 个字符",
 					equalTo : "两次密码输入不一致"
 				},
 			}
@@ -68,27 +58,27 @@
 			<div class="input-group">
             <span class="input-group-addon">用户名:</span>
             <input type="text" class="form-control" value="${userId}"
-							placeholder="请输15位以内的昵称" name="fullName" id="fullname" />
+							placeholder="请输15位以内的昵称" name="fullName" id="fullname" disabled/>
         	</div>
         	<br>
 			<div class="input-group">
             <span class="input-group-addon">姓     名:</span>
-            <input type="text" class="form-control" value="${name}" name="realname" id="realname" />
+            <input type="text" class="form-control" value="${name}" name="realname" id="realname" disabled/>
         	</div>
         	<br>	
 			<div class="input-group">
             <span class="input-group-addon">手机号:</span>
-            <input type="text" class="form-control" value="${phone}" name="phone" id="phone" />
+            <input type="text" class="form-control" value="${phone}" name="phone" id="phone" disabled/>
         	</div>
         	<br>	
         	<div class="input-group">
             <span class="input-group-addon">邮 箱:</span>
-            <input type="text" class="form-control" value="${email}" name="email" id="email" />
+            <input type="text" class="form-control" value="${email}" name="email" id="email" disabled/>
         	</div>	
         	<br>
         	<div class="input-group">
             <span class="input-group-addon">密 码:</span>
-            <input type="password" class="form-control" value="${password}" name="password" id="password" />
+            <input type="password" class="form-control" value="${password}" name="password" id="password" disabled/>
 			</div>
 			<input type="button" class="btn btn-link form-control"
 							id="password" data-toggle="modal" data-target="#myModal"
@@ -116,10 +106,6 @@
 						</div>
 						<div class="modal-body">
 							<div class="inputs col-md-offset-2">
-								<div style="margin-top: 8px;">
-									<input style="width: 368px;" id="nowPas" placeholder="当前密码"
-										type="password" class="txt" name="nowPas">
-								</div>
 								<div style="margin-top: 8px;">
 									<input style="width: 368px;" id="newPas" placeholder="新密码"
 										type="password" class="txt" name="newPas">

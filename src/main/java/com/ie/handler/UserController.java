@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.ie.handler;
 
 import java.util.List;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ie.entities.ItemBank;
 import com.ie.entities.User;
 import com.ie.service.UserService;
 import com.ie.util.BaseController;
@@ -40,14 +36,14 @@ public class UserController extends BaseController {
 	
 	@RequestMapping(value = "/management", method = {RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public String manageItem(Page page) {
+	public String manageUser(Page page) {
 		List<User> userList = userService.listAllUsers();
 		return this.getJsonStr(page, userList);
 	}
 	
 	@RequestMapping("/search")
 	@ResponseBody
-	public String searchItem(@RequestParam(value="name") String name, HttpServletRequest request, Page page){
+	public String searchUser(@RequestParam(value="name") String name, HttpServletRequest request, Page page){
 		List<User> userList = userService.searchUser(name);
 		return this.getJsonStr(page, userList);
 	}
@@ -55,8 +51,14 @@ public class UserController extends BaseController {
 	@Transactional
 	@RequestMapping("/update")
 	public String updateUser(HttpServletRequest request) {
-		String[] user = {};
-		boolean result = userService.update();
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		String roleId = request.getParameter("roleId");
+		
+		String[] user = {id, name, phone, email, roleId};
+		boolean result = userService.update(user);
 		if(result) {
 			//log
 		} else {
@@ -67,7 +69,7 @@ public class UserController extends BaseController {
 	
 	@Transactional
 	@RequestMapping("/delete")
-	public String deleteItem(HttpServletRequest request) {
+	public String deleteUser(HttpServletRequest request) {
 		String id = request.getParameter("id");
 		boolean result = userService.delete(id);
 		if(result) {

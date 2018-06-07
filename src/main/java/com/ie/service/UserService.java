@@ -47,16 +47,6 @@ public class UserService {
 	/**
 	 * @author: lvqingyang
 	 * @Description: 该函数的功能描述
-	 * @date: 2018年6月5日 下午3:13:47
-	 */
-	public boolean update() {
-		// TODO 自动生成的方法存根
-		return false;
-	}
-
-	/**
-	 * @author: lvqingyang
-	 * @Description: 该函数的功能描述
 	 * @date: 2018年6月5日 下午3:22:22
 	 */
 	public boolean delete(String id) {
@@ -92,5 +82,20 @@ public class UserService {
 		
 		Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);
 		return result.toString();
+	}
+
+	/**
+	 * @author: lvqingyang
+	 * @Description: 该函数的功能描述
+	 * @date: 2018年6月7日 下午2:04:31
+	 */
+	public boolean update(String[] userStr) {
+		User user = new User();
+		user.setId(Integer.valueOf(userStr[0]));
+		user.setName(userStr[1]);
+		user.setPhone(userStr[2]);
+		user.setEmail(userStr[3]);
+		user.setRoleId(Integer.valueOf(userStr[4]));
+		return true;
 	}
 }

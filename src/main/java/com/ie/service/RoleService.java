@@ -33,13 +33,15 @@ public class RoleService {
 
 	/**
 	 * @author: lvqingyang
+	 * @param isUse 
 	 * @Description: 修改角色
 	 * @date: 2018年6月7日 下午6:52:30
 	 */
-	public boolean update(String id, String name) throws Exception {
+	public boolean update(String id, String name, String isUse) throws Exception {
 		Role role = new Role();
 		role.setId(Integer.valueOf(id));
 		role.setName(name);
+		role.setIsUse(Integer.valueOf(isUse));
 		roleDao.save(role);
 		return true;
 	}

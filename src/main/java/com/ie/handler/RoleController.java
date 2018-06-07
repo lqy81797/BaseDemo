@@ -53,8 +53,9 @@ public class RoleController extends BaseController {
 		try{
 			String id = request.getParameter("id");
 			String name = request.getParameter("name");
+			String isUse = request.getParameter("isUse");
 
-			boolean result = roleService.update(id, name);
+			boolean result = roleService.update(id, name, isUse);
 			if(result) {
 				logger.debug("修改角色成功");
 			} else {

@@ -76,7 +76,7 @@ public class ItemBankController extends BaseController {
 	 */
 	@RequestMapping("/downloadExcel")
 	public void downloadExcel(HttpServletResponse response){
-		String filename = "题目上传模板.xlsx";
+		String filename = "download.xlsx";
 		try {
 			filename = new String(filename.getBytes(),"UTF-8");
 			XSSFWorkbook workbook = itemBankService.getExcel();

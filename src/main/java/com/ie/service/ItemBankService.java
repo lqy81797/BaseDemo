@@ -33,7 +33,7 @@ public class ItemBankService {
 	 * @Description: 向数据库添加新题目
 	 * @date: 2018年5月28日 下午6:54:44
 	 */
-	public void addItem(String[] item, User createUser, Date createDate) throws Exception {
+	public ItemBank addItem(String[] item, User createUser, Date createDate) throws Exception {
 		ItemBank itemBank = new ItemBank();
 		itemBank.setQuestion(item[0]);
 		itemBank.setOptionA(item[1]);
@@ -43,7 +43,7 @@ public class ItemBankService {
 		itemBank.setAnswer(item[5]);
 		itemBank.setCreateUser(createUser.getUserName());
 		itemBank.setCreateTime(createDate);
-		itemBankDao.save(itemBank);
+		return itemBankDao.save(itemBank);
 	}
 
 	/**

@@ -40,16 +40,15 @@ public class ActivitiTest {
 	
 	@Test
 	public void findMyPersonalTask() {
-		String assignee = "lisi";
 		List<Task> list = processEngine.getTaskService()
 				.createTaskQuery()
-				.taskAssignee(assignee)
+				.processDefinitionKey("exam")
 				.list();
 		if(list != null && list.size() > 0){
 			for(Task task : list) {
 				System.out.println(task.getId());
+				System.out.println(task.getName());
 			}
 		}
 	}
-	
 }

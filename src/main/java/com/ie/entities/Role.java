@@ -31,6 +31,8 @@ public class Role implements Serializable {
 	private Integer id;
 	
 	private String name;
+	
+	private Integer isUse;
 
 	/**
 	 * @return id
@@ -58,6 +60,20 @@ public class Role implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return isUse
+	 */
+	public Integer getIsUse() {
+		return isUse;
+	}
+
+	/**
+	 * @param isUse 要设置的 isUse
+	 */
+	public void setIsUse(Integer isUse) {
+		this.isUse = isUse;
 	}
 	
 }

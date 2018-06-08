@@ -162,10 +162,8 @@
 		function jump(rowid){
 			  $.ligerDialog.open({ target: $("#target1") });
 			  confirm = rowid;
-			  alert(confirm);
 		}
 		function approve(){
-			alert(confirm);
 			window.location.href = "${base}/WorkflowController/submit.do?id="+ confirm;
 		}
 		//$("#approve").click

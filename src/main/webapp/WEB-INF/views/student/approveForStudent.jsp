@@ -95,7 +95,6 @@
 
 		});
 		function jump(rowid){
-			alert(rowid);
 			window.location.href = "${base}/WorkflowController/startProcess.do?id="+ rowid;
 		}
 		

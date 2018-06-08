@@ -9,6 +9,7 @@ public class FilterChainDefinitionMapBuilder {
 		map.put("/shiro/login", "anon");
 		map.put("/register.jsp", "anon");
 		map.put("/resource/**", "anon");
+		map.put("/RegisterController/**", "anon");
 		
 		map.put("/**", "authc");
 		
